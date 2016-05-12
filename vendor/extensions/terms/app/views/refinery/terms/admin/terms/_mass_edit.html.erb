@@ -1,0 +1,6 @@
+<tr>
+  <td><%= term.id %></td>
+  <td><%= term.title %></td>
+  <td><%= text_field_tag "terms[#{term.id}][legacy_id]", term.legacy_id %></td>
+  <td><%= text_field_tag "terms[#{term.id}][legacy_type]", (term.legacy_id.present?? term.legacy_type : params[:theme_id]) %></td>
+</tr>

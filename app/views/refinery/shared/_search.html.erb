@@ -1,0 +1,13 @@
+<input type="submit" value="Search">
+
+<div class="input-wrap">
+
+  <div class="search-field-wrap">
+    <input type="search" class="search" placeholder="<%= copywriting('Search box placeholder', { scope: 'homepage', default: 'Search for terms or acronyms' }) %>" name="q">
+  </div>
+
+  <div class="select-field-wrap">
+    <%= select_tag 'theme_id', options_for_theme_select, prompt: 'All themes', class: 'js-styled-select' %>
+  </div>
+
+</div>

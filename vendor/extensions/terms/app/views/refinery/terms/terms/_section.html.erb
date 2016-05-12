@@ -1,0 +1,6 @@
+<section id="<%= section.title.parameterize %>" class="toggle-section js-section-toggle">
+  <h2><%= link_to section.title, 'javascript:void(0)', class: 'js-toggle-content' %></h2>
+  <div class="js-section-content">
+    <%= raw parse_for_citations(section.body) %>
+  </div>
+</section>

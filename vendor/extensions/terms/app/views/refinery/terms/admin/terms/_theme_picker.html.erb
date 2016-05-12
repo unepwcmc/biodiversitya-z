@@ -1,0 +1,8 @@
+<%= f.select(:master_id, options_for_select(Refinery::Terms::Theme.themes.order(:title).collect { |t| [t.title, t.id] }, @term.master_theme_id), prompt: 'Please select') %>
+
+<br><br>
+
+<label class="section-title">Select additional themes and categories</label>
+<fieldset class="themes-and-categories">
+  <%= output_term_associations(Refinery::Terms::Theme.themes.order(:title)) %>
+</fieldset>

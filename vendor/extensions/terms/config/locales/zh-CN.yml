@@ -1,0 +1,49 @@
+zh-CN:
+  refinery:
+    plugins:
+      themes:
+        title: Themes
+      terms:
+        title: Terms
+    terms:
+      admin:
+        themes:
+          actions:
+            create_new: 建立新的 Theme
+            reorder: 对 Themes 重新排序
+            reorder_done: 对 Themes 的重新排序结束
+          records:
+            title: Themes
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Themes . 点击 "Add New Theme" 创建一个theme.
+          theme:
+            view_live_html: 查看 theme 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 theme
+            delete: 永久删除 theme
+        terms:
+          actions:
+            create_new: 建立新的 Term
+            reorder: 对 Terms 重新排序
+            reorder_done: 对 Terms 的重新排序结束
+          records:
+            title: Terms
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Terms . 点击 "Add New Term" 创建一个term.
+          term:
+            view_live_html: 查看 term 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 term
+            delete: 永久删除 term
+      themes:
+        show:
+          other: 其他 Themes
+      terms:
+        show:
+          other: 其他 Terms
+  activerecord:
+    attributes:
+      refinery/terms/theme:
+        title: Title
+      refinery/terms/term:
+        title: Title
+        definition: Definition
+        description: Description

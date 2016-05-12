@@ -1,0 +1,10 @@
+<footer class="page-footer">
+  <div class="container">
+    <a href="http://www.unep-wcmc.org/" target="_blank" class="unep-wcmc"></a>
+    <nav class="nav footer-nav">
+      <% @footer_items.each do |page| %>
+        <%= link_to page.title, refinery.page_path(page) %>
+      <% end %>
+    </nav>
+  </div>
+</footer>

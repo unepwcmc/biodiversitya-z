@@ -1,0 +1,29 @@
+<fieldset class='nested expandable-fields' data-nested-item='true' data-sortable-item='true'>
+
+  <fieldset class="open-section">
+    <span><%= f.object.title %></span>
+    <%= refinery_icon_tag 'arrow_switch', 'data-handle' => true, :title => 'Reorder', :class => 'handle' %>
+  </fieldset>
+
+  <fieldset class="section-details">
+    <%= f.hidden_field :position, 'data-position' => true %>
+
+    <div class='field'>
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => 'change-title-on-edit' %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+  </fieldset>
+
+  <%= link_to_remove_field 'Remove this tool', f %>
+
+</fieldset>

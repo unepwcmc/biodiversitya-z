@@ -1,0 +1,13 @@
+<fieldset class="depth_1">
+
+  <%= check_box_tag("term[association_ids][]", theme.id, @term.themes.include?(theme), data: { association: theme.id}) %>
+  <%= label_tag theme.title %>
+
+  <fieldset class="children depth_2">
+
+  	<label class="fieldset-title">Category</label>
+    <%= render partial: 'category', collection: theme.children, as: 'category' %>
+
+  </fieldset>
+
+</fieldset>

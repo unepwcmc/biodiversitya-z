@@ -1,0 +1,122 @@
+<% content_for :article_header do %>
+
+  <header class="term-header">
+
+    <h1 class="brand-logo" rel="nofollow">
+      <a class="bio-logo" href="http://www.biodiversitya-z.org" style="background-image: url('<%= asset_path('logo-main.jpg') %>');"></a>
+      <span class="divider">&nbsp;</span>
+      <a class="wcmc-logo" href="http://www.unep-wcmc.org/" target="_blank"></a>
+    </h1>
+
+    <div class="term-header-left">
+      <h2 class="term-title">
+        <%= link_to @term.title, refinery.terms_term_url(@term), style: "" %>
+      </h2>
+
+      <section class="circle-buttons">
+        <%= output_themes_for_term(@themes, @term) %>
+      </section>
+      
+      <section class="highlight-box">
+        <h2>Definition</h2>
+        <p><%=raw @term.definition %></p>
+      </section>
+    </div>
+
+  </header>
+
+<% end %>
+
+<% content_for :article_body do %>
+  <div class="term-main">
+    <section class="description">
+      <p><%=raw @term.description %></p>
+    </section>
+
+    <%= render partial: 'section.html.erb', collection: @term.sections %>
+
+    <section class="toggle-section js-section-toggle term-references">
+      <h2><a href="javascript:void(0)" class="js-toggle-content shown">References &amp; website</a></h2>
+      <div class="js-section-content" style="display: none;">
+        <ol>
+          <%= render partial: 'reference.html.erb', collection: @term.references %>
+        </ol>
+      </div>
+    </section>
+
+    <aside class="back-to-top">
+      <a href=".page-wrap.with-gradient" class="js-smooth-scroll" data-offset="20">Back to top</a>
+    </aside>
+
+  </div>
+<% end %>
+
+<% content_for :article_sidebar do %>
+  <aside class="term-sidebar">
+
+    <div>
+      <figure>
+        <%= image_fu(@term.featured_image, '490x350#') %>
+        <%= content_tag :figcaption, @term.caption unless @term.caption.nil? %>
+      </figure>
+
+      <%= render 'categories.html.erb', categories: @term.categories if @term.categories.any? %>
+      <%= render 'terms.html.erb', terms: @term.related_terms if @term.related_terms.any? %>
+      <%= render 'tools.html.erb', tools: @term.tools if @term.tools.any? %>
+      <%= render 'links.html.erb', links: @term.links if @term.links.any? %>
+
+      <p class="article-meta">Page last updated <%= @term.updated_at.to_s(:updated_at) %></p>
+    </div>
+
+  </aside>
+
+<% end %>
+
+<% content_for :article_footer do %>
+  <footer class="term-footer">
+    <h1><%= link_to @term.title, refinery.terms_term_url(@term) %></h1>
+
+    <aside class="circle-buttons">
+      <%= output_themes_for_term(@themes, @term) %>
+    </aside>
+
+    <%= content_tag :section do %>
+      <% render 'categories.html.erb', categories: @term.categories %>
+    <% end if @term.categories.any? %>
+
+    <%= content_tag :section do %>
+      <% render 'terms.html.erb', terms: @term.related_terms %>
+    <% end if @term.related_terms.any? %>
+
+    <%= content_tag :section do %>
+      <%= render 'tools.html.erb', tools: @term.tools %>
+    <% end if @term.tools.any? %>
+
+    <%= content_tag :section do %>
+      <%= render 'links.html.erb', links: @term.links %>
+    <% end if @term.links.any? %>
+
+    <p class="article-meta">Page last updated <%= @term.updated_at.to_s(:updated_at) %></p>
+
+  </footer>
+<% end %>
+
+<article class="page-wrap with-gradient">
+
+  <div class="container">
+
+    <a class="bio-logo" href="/" style="background-image: url('<%= logo_url(@logo) %>');"></a>
+      <span class="divider">&nbsp;</span>
+    <a class="wcmc-logo" href="http://www.unep-wcmc.org/" target="_blank"></a>
+
+    <%= yield :article_header %>
+    <%= yield :article_body %>
+    <br>
+    <br>
+    <%= yield :article_sidebar %>
+
+  </div>
+
+</article>
+
+

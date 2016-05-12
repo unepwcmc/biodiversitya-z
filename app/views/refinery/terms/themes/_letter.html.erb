@@ -1,0 +1,8 @@
+<li id="letter-<%= letter.letter %>" class="<%= letter.terms.blank?? 'empty' : 'not-empty' %>">
+  <span class="h1" href="#"><%= letter.letter %></span>
+  <ul>
+    <%= content_tag_for :li, letter.terms do |term| %>
+      <%= link_to_term(term, @theme) %>
+    <% end %>
+  </ul>
+</li>

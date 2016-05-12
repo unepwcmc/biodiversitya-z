@@ -1,0 +1,51 @@
+sk:
+  refinery:
+    plugins:
+      themes:
+        title: Themes
+      terms:
+        title: Terms
+    terms:
+      admin:
+        themes:
+          actions:
+            create_new: Pridať Theme
+            reorder: Preusporiadať Themes
+            reorder_done: Koniec radenia Themes
+          records:
+            title: Themes
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Themes. Kliknite na "Pridať Theme"
+              pre pridanie prvého theme.
+          theme:
+            view_live_html: Zobraziť náhľad theme<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť theme
+            delete: Zmazať theme
+        terms:
+          actions:
+            create_new: Pridať Term
+            reorder: Preusporiadať Terms
+            reorder_done: Koniec radenia Terms
+          records:
+            title: Terms
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Terms. Kliknite na "Pridať Term"
+              pre pridanie prvého term.
+          term:
+            view_live_html: Zobraziť náhľad term<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť term
+            delete: Zmazať term
+      themes:
+        show:
+          other: Daľšie Themes
+      terms:
+        show:
+          other: Daľšie Terms
+  activerecord:
+    attributes:
+      refinery/terms/theme:
+        title: Title
+      refinery/terms/term:
+        title: Title
+        definition: Definition
+        description: Description

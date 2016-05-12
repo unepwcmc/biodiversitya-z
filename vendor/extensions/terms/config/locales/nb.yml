@@ -1,0 +1,53 @@
+nb:
+  refinery:
+    plugins:
+      themes:
+        title: Themes
+      terms:
+        title: Terms
+    terms:
+      admin:
+        themes:
+          actions:
+            create_new: Lag en ny Theme
+            reorder: Endre rekkefølgen på Themes
+            reorder_done: Ferdig å endre rekkefølgen Themes
+          records:
+            title: Themes
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Themes enda. Klikk på "Lag en ny Theme" for
+              å legge til din første theme.
+          theme:
+            view_live_html: Vis hvordan denne theme ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne theme
+            delete: Fjern denne theme permanent
+        terms:
+          actions:
+            create_new: Lag en ny Term
+            reorder: Endre rekkefølgen på Terms
+            reorder_done: Ferdig å endre rekkefølgen Terms
+          records:
+            title: Terms
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Terms enda. Klikk på "Lag en ny Term" for å
+              legge til din første term.
+          term:
+            view_live_html: Vis hvordan denne term ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne term
+            delete: Fjern denne term permanent
+      themes:
+        show:
+          other: Andre Themes
+      terms:
+        show:
+          other: Andre Terms
+  activerecord:
+    attributes:
+      refinery/terms/theme:
+        title: Title
+      refinery/terms/term:
+        title: Title
+        definition: Definition
+        description: Description

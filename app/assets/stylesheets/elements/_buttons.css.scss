@@ -1,0 +1,146 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+
+/* START BUTTON STYLES */
+
+// Used to style the circle theme buttons on a terms page adn theme page
+.circle-buttons{
+  width: 90%;
+  margin: auto;
+  text-align: center;
+
+  a{
+    @include adjust-font-size-to(12px);
+    @include transition(all 0.2s ease-in-out);
+    @include border-radius(50%);
+    border: 2px solid $brand-light-grey;
+    color: $brand-light-grey;
+    display: inline-block;
+    font-weight: $base-font-weight;
+    line-height: 6.2em;
+    margin: 0 5px 10px 5px;
+    height: 6.5em;
+    width: 6.5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover{
+      color: $white;
+      background: $brand-light-grey
+    }
+    &.active {
+      color: $white;
+    }
+  } 
+}
+
+
+// Used to style the read full definition button on the homepage
+.read-definition-btn{
+  @extend %t-base;
+  @include transition(all 0.2s ease-in-out);
+  @include border-radius(5px);
+  background-image: image-url('right-arrow.png');
+  background-position: 115px center;
+  background-repeat: no-repeat;
+  border: 1px solid $white;
+  color: $white;
+  display: inline-block;
+  padding: 1em 3em 1em 1em;
+  text-decoration: none;
+
+  &:hover{
+    background-color: $white;
+    background-position: 210px center;
+    color: $brand-color-navy;
+    padding: 1em 2em; 
+  }
+}
+
+// Used to style the rowse all terms button article and search views
+.browse-terms-btn{
+  @extend %t-base;
+  @include transition(all 0.2s ease-in-out);
+  background: $brand-color-blue;
+  color: $white;
+  display: block;
+  font-weight: $base-font-weight;
+  padding: 1em 1.5em;
+  text-decoration: none;
+
+  &:hover{
+    background: darken($brand-color-blue,5%);
+  }
+}
+
+.back-btn{
+  @include transition(all 0.2s ease-in-out);
+  @include border-top-left-radius(5px);
+  @include border-top-right-radius(5px);
+  background-color: darken($brand-light-grey, 10%);
+  display: block;
+  padding: 0.25em 1em 0;
+  position: absolute;
+  left:0;
+  line-height: 2;
+  margin-bottom: -5px;
+  bottom:0;
+  text-decoration: none;
+
+  &:hover{
+    i{
+      @include transition(all 0.2s ease-in-out);
+      margin-left: -5px;
+      margin-right: 5px;
+    }
+  }
+
+  i{
+    @include transition(all 0.2s ease-in-out);
+    @extend %bio-icon;
+    color: $white;
+    &:before{
+      @extend %bio-icon-back-arrow;
+    }
+  }
+}
+
+// back to top
+
+.back-to-top {
+  @include adjust-font-size-to(10px);
+  @include transition(opacity 0.2s ease-in-out);
+  background: $brand-color-blue;
+  bottom: 15%;
+  box-sizing: content-box;
+  font-weight: $mid-light-font-weight;
+  line-height: 16px;
+  margin-bottom: -60px;
+  padding: 0.75em 0.5em;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 60px;
+
+  a {
+    color: white !important;
+    display: block;
+    text-decoration: none;
+
+    &:before {
+      @include adjust-font-size-to(16px);
+      content: "\2191";
+      display: block;
+      margin-top: -5px;
+      line-height: 26px;
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}

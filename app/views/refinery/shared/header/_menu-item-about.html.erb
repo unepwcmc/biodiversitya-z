@@ -1,0 +1,8 @@
+<li>
+  <a href="/about"><%= copywriting('About menu', { scope: 'header', default: 'About' }) %></a>
+  <ul class="child-menu about">
+    <%= content_tag_for :li, @about.children do |c| %>
+      <%= link_to c.title, refinery.terms_theme_path(c) %>
+    <% end %>
+  </ul>
+</li>

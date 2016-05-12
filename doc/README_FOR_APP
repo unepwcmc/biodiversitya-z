@@ -1,0 +1,29 @@
+#Technical Overview
+
+#Search
+
+The search uses Sphinx Search under the hood and the Thinking Sphinx gem layered over top to provide an Active::Record-like
+interface.
+
+#Letters
+
+In order to easily display letters on each theme page and distinguish between those with terms and those without we've
+introduced a Refinery::Terms::Letter model.  All 26 letters are created and associated with a theme in an after_create
+callback.  The letter model has a counter cache for it's associated terms.
+
+#Themes & Categories
+
+Themes and categories are stored both instances of the Refinery::Terms::Theme model.  Nested Set is used to provide nested
+set behaviour to the model allowing use of the standard set methods like: children, parent and siblings.  Themes, categories
+and subcategories are distinguished by their depth attribute: 0 = themes, 1 = categories and 2 = subcategories.
+
+##Master Theme
+
+There is a many-to-many relationship between a term and themes however each term has one theme that is flagged as the master
+theme.  This is modelled using an is_master boolean on the intermediate join model.  The introduction of this boolean has
+enforced a couple of decisions.
+
+When themes are associated with a term the form actually deals with the join models directly rather than the theme_ids as
+you would normally expect in rails.  A before_filter attached to the update action clears all existing associations before
+new ones are created.  An after_create hook on the join model checks for the is_master status and forces the counter_cache
+on the associated letter to update.

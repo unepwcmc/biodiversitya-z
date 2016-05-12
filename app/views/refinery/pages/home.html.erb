@@ -1,0 +1,53 @@
+<script>
+  pageType = "Homepage";
+</script>
+
+<% content_for :custom_body_class, "home" %>
+
+<section class="page-banner home-banner" role="banner">
+  <div class="container">
+
+    <h1 class="tagline"><%= raw @page.content_for(:body) %></h1>
+
+    <%# TODO: Need to find a nicer way to add the onsubmit handler %>
+    <form action="/content" class="custom home-site-search" onsubmit="
+    dataLayer.push({
+        'event': gtm.click,
+        'eventCategory': 'Search',
+        'eventAction': 'Search clicked',
+        'eventValue': 'Homepage'
+    });">
+      <%= render 'refinery/shared/search' %>
+    </form>
+
+  </div>
+
+  <a href=".home-theme-browser" class="js-smooth-scroll scroll-arrow"></a>
+
+</section>
+
+
+<section class="home-theme-browser">
+
+  <h2><%= copywriting('Browse terms by theme', { scope: 'homepage', default: 'Browse terms by theme' }) %></h2>
+
+  <ul class="theme-list">
+    <%= output_themes_for_homepage(@themes) %>
+  </ul>
+
+</section>
+
+<section class="home-totd">
+
+  <h2>Definition: <%= copywriting('Homepage term', { scope: 'homepage', default: 'Biodiversity' }) %></h2>
+
+  <div class="term-wrap">
+    <h1><%= copywriting('Homepage term', { scope: 'homepage', default: 'Biodiversity' }) %></h1>
+    <%= raw copywriting('Homepage defintion', { phrase_type: :wysiwyg, scope: 'homepage', default: 'Biological diversity means the variability among living organisms from all sources including, inter alia, terrestrial, marine and other aquatic ecosystems and the ecological complexes of which they are a part; this includes diversity within species, between species and of ecosystems.' }) %>
+
+    <%= link_to refinery.terms_term_path(@biodiversity), class:'read-definition-btn' do %>
+      <% content_tag :span, copywriting('Read full definition', { scope: 'homepage', default: 'Read full definition' }) %>
+    <% end rescue '' %>
+  </div>
+
+</section>

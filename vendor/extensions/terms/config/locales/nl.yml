@@ -1,0 +1,53 @@
+nl:
+  refinery:
+    plugins:
+      themes:
+        title: Themes
+      terms:
+        title: Terms
+    terms:
+      admin:
+        themes:
+          actions:
+            create_new: Nieuwe Theme toevoegen
+            reorder: De volgorde van de Themes wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Theme-volgorde
+          records:
+            title: Themes
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Themes. Druk op 'Nieuwe Theme toevoegen'
+              om de eerste toe te voegen.
+          theme:
+            view_live_html: Deze theme op de website bekijken <br/><em>(opent in een
+              nieuw venster)</em>
+            edit: Bewerk deze theme
+            delete: Deze theme definitief verwijderen
+        terms:
+          actions:
+            create_new: Nieuwe Term toevoegen
+            reorder: De volgorde van de Terms wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Term-volgorde
+          records:
+            title: Terms
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Terms. Druk op 'Nieuwe Term toevoegen'
+              om de eerste toe te voegen.
+          term:
+            view_live_html: Deze term op de website bekijken <br/><em>(opent in een
+              nieuw venster)</em>
+            edit: Bewerk deze term
+            delete: Deze term definitief verwijderen
+      themes:
+        show:
+          other: Andere Themes
+      terms:
+        show:
+          other: Andere Terms
+  activerecord:
+    attributes:
+      refinery/terms/theme:
+        title: Title
+      refinery/terms/term:
+        title: Title
+        definition: Definition
+        description: Description

@@ -1,0 +1,12 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  no_master_theme: This term has not been tagged with a master theme.  It is currently only visible to admin users.
+  refinery:
+    admin:
+      pages:
+        form_advanced_options:
+          show_in_footer_title: Show in footer
+          show_in_footer_description: Display this page in the footer menu
+          show_in_footer_help: Check this box if you want to add a page to your footer menu

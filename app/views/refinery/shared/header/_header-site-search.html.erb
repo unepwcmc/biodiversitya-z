@@ -1,0 +1,23 @@
+<form action="/content" class="header-site-search custom" onsubmit="
+dataLayer.push({
+    'event': gtm.click,
+    'eventCategory': 'Search',
+    'eventAction': 'Search clicked',
+    'eventValue': 'Header'
+});">
+
+  <input type="submit" value="Go">
+
+  <div class="input-wrap">
+
+    <div class="select-field-wrap">
+      <%= select_tag 'theme_id', options_for_theme_select, prompt: 'All themes', class: 'js-styled-select' %>
+    </div>
+
+    <div class="search-field-wrap">
+      <input type="search" class="search" placeholder="Search" name="q" value="<%= params[:q] %>">
+    </div>
+
+  </div>
+
+</form>

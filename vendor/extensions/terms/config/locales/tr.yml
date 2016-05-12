@@ -1,0 +1,53 @@
+tr:
+  refinery:
+    plugins:
+      themes:
+        title: Themes
+      terms:
+        title: Terms
+    terms:
+      admin:
+        themes:
+          actions:
+            create_new: Yeni Ekle Theme
+            reorder: Tekrar sirala Themes
+            reorder_done: Tekrar siralama tamamlandiThemes
+          records:
+            title: Themes
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Themes yok henuz.  Tikla "Yeni Ekle Theme"
+              eklemek senin ilk theme.
+          theme:
+            view_live_html: Bunu canlu theme goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle theme
+            delete: Bunu Sil theme sonsuza dek
+        terms:
+          actions:
+            create_new: Yeni Ekle Term
+            reorder: Tekrar sirala Terms
+            reorder_done: Tekrar siralama tamamlandiTerms
+          records:
+            title: Terms
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Terms yok henuz.  Tikla "Yeni Ekle Term" eklemek
+              senin ilk term.
+          term:
+            view_live_html: Bunu canlu term goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle term
+            delete: Bunu Sil term sonsuza dek
+      themes:
+        show:
+          other: Diger Themes
+      terms:
+        show:
+          other: Diger Terms
+  activerecord:
+    attributes:
+      refinery/terms/theme:
+        title: Title
+      refinery/terms/term:
+        title: Title
+        definition: Definition
+        description: Description

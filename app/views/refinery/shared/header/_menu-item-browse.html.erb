@@ -1,0 +1,9 @@
+<li>
+  <a href="#" style="cursor: default;"><%= copywriting('Browse themes menu', { scope: 'header', default: 'Browse themes' }) %></a>
+  <ul class="child-menu browse-menu">
+    <span>Browse term by theme</span>
+    <li>
+      <%= render partial: 'refinery/shared/header/theme', collection: @themes %>
+    </li>
+  </ul>
+</li>

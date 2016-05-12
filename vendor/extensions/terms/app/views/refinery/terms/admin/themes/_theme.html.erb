@@ -1,0 +1,24 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(theme) -%>">
+  <span class='title'>
+    <strong><%= theme.title %></strong>
+    <%= "in: #{theme.parent.title}" if theme.parent_id? %>
+  </span>
+  <span class='actions'>
+
+    <%= link_to refinery_icon_tag("add.png"),
+                refinery.new_terms_admin_theme_path({parent_id: theme.id}),
+                :title => t('.create_new') unless theme.depth > 1 %>
+
+    <%= link_to refinery_icon_tag("application_go.png"), refinery.terms_admin_themes_path({id:theme.id}),
+        :title => t('.view_child_themes') %>
+    
+    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_terms_admin_theme_path(theme),
+         :title => t('.edit') %>
+
+    <%= link_to refinery_icon_tag("delete.png"), refinery.terms_admin_theme_path(theme),
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :confirm => t('message', :scope => 'refinery.admin.delete', :title => theme.title),
+        :method => :delete %>
+  </span>
+</li>

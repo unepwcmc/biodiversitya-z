@@ -1,0 +1,31 @@
+<header id="js-page-header" class="page-header initial-header">
+
+    <div class="container">
+
+      <h1 class="brand-logo" rel="nofollow">
+        <a class="bio-logo" href="/" style="background-image: url('<%= logo_url(@logo) %>');"></a>
+        <span class="divider">&nbsp;</span>
+        <a class="wcmc-logo" href="http://www.unep-wcmc.org/" target="_blank"></a>
+      </h1>
+
+      <nav class="nav primary-header-nav" role="navigation">
+
+        <%= render 'refinery/shared/header/header-site-search' %>
+
+        <ul class="parent-menu">
+          <%= render 'refinery/shared/header/menu-item-browse' %>
+          <%= render 'refinery/shared/header/menu-item-about' %>
+          <li>
+            <a href="/">Home</a>
+          </li>
+        </ul>
+
+      </nav>
+
+      <%= render 'refinery/shared/header/header-mobile-nav' %>
+
+      <a class="mobile-menu-toggle js-toggle-menu" href="#">Menu</a>
+
+    </div>
+
+</header>

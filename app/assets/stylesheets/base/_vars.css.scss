@@ -1,0 +1,84 @@
+/*** SITE WIDE VARIABLES ***/
+
+
+// Colours
+
+$brand-color-navy: #021d30;	// Base (dark blue)
+$brand-color-teal: #01548e; // Base (medium blue)
+$brand-color-blue: #3994d6; // Call to action (light blue)
+$brand-color-turquoise: #63CAFF; // Marine
+$brand-color-orange : #dd8012; // Key
+$brand-color-green: #6DA400; // Areas
+$brand-color-red: #FB3E2A; // Areas
+$brand-color-yellow: #d4be18; //Countries
+
+// Neutrals
+$white : #ffffff;
+$black : #000000;
+
+// Greys and backgrounds
+
+$brand-off-white: #dedede;
+$brand-light-grey: #e6e6e6;
+$brand-mid-grey: #d9d9d9;
+$brand-dark-grey: #3c3b3f;
+
+// Special colours
+
+$brand-text-colour: #454545;
+$brand-input-grey: #b3b3b3;
+$brand-input-blue: #3994d6;
+
+$download-blue: #2e76ab;
+
+
+// V rhythm setup
+
+$rhythm-unit: "rem";
+$base-font-size: 18px;
+$base-line-height: 26px;
+
+// Typescale
+
+$x-tiny-font-size: 12px;
+$x-tiny-font-leading: 0.75;
+
+$tiny-font-size: 12px;
+$tiny-font-leading: 0.75;
+
+$small-font-size: 14px;
+$small-font-leading: 0.75;
+
+$base-font-size: 16px;
+$base-font-leading: 0.95;
+
+$medium-font-size: 20px;
+$medium-font-leading: 1.25;
+
+$large-font-size: 36px;
+$large-font-leading: 1.25;
+
+
+
+// Font Styles
+
+$base-font-color: #021D30;
+$base-font-family: "museo-sans", Helvetica, Arial, sans-serif;
+$header-font-family: "bitterregular", Helvetica, Arial, sans-serif;
+
+$light-font-weight: 100;
+$mid-light-font-weight: 300;
+$base-font-weight: 500;
+$heavy-font-weight: 900;
+
+
+// Breakpoints - adapt as required
+
+// Any styles not wrapped in a breakpoint mixin will be displayed from zero pixel width up 
+$mobile: 20.000em; //min width 320px @16px
+$large_mobile: 30.063em; //min width 481px @16px
+$small_tablet: 38.000em; //min width 608px @16px
+$tablet: 48.000em; //min width 768px @16px 
+$large_tablet: 56.250em; //min width 900px @16px 
+$desktop: 64.375em; //min width 1030px @16px 
+$large_desktop: 77.500em; //min width 1240px @16px 

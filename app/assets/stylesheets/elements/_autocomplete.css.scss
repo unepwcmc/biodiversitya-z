@@ -1,0 +1,55 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+.ui-menu {
+  box-shadow: 0 2px 4px rgba($black, 0.1);
+  padding: 0;
+
+  .ui-menu-item {
+    border: 1px solid $white;
+    border-bottom-color: rgba($black, 0.05);
+    cursor: pointer;
+    font-family: $base-font-family;
+    list-style-image: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.ui-menu.home-autocomplete, .ui-menu.search-autocomplete {
+  max-height: 300px;
+  overflow: scroll;
+
+  .ui-menu-item {
+    font-size: 0.9rem;
+    padding: 1em 0.5em;
+
+    @include breakpoint($tablet) {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+.ui-menu.header-autocomplete {
+  z-index: 999;
+
+  .ui-menu-item {
+    font-size: 0.75rem;
+    padding: 0.5em;
+  }
+}
+
+
+.ui-widget-content {
+  background: $white;
+  border: none;
+  color: $base-font-color;
+}
+
+.ui-state-focus {
+  border: 1px solid $brand-color-blue;
+  background: $brand-color-blue;
+  font-weight: 100;
+  color: $white;
+}

@@ -1,0 +1,1 @@
+jQuery(document).ready(function(n){function o(){return e?"You have unsaved changes on this page":void 0}function t(){e=!0}var e=!1;n(document).on("change",":input",function(){e=!0}),n(document).on("click","#submit_button",function(){e=!1}),n(n(".wym_box iframe").get(0).contentWindow.document).keydown(function(){window.setTimeout(t,0)}),window.onbeforeunload=o});

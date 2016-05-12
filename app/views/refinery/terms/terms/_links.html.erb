@@ -1,0 +1,10 @@
+<h3 class="<%= 'no-content' unless links.any? %>">Links</h3>
+<ul class="external-links">
+  <% if links.any? %>
+    <%= content_tag_for :li, links do |c| %>
+      <% link_to c.title, c.url, target: :blank %>
+    <% end %>
+  <% else %>
+    <li class="no-content">No links</li>
+  <% end %>
+</ul>

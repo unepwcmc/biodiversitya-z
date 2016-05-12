@@ -1,0 +1,492 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+// TERM PAGE GENERAL
+
+.term {
+
+  .term-header-left, .term-main {
+    ul {
+      font-weight: $light-font-weight;
+      list-style: disc;
+      padding-left: 1.5em;
+    }
+
+    ol {
+      font-weight: $light-font-weight;
+      list-style: decimal;
+      padding-left: 1.5em;
+    }
+  }
+
+  .page-footer {
+    margin-top: 8em;
+  }
+
+  .external-links {
+    a {
+      position: relative;
+
+      &:after {
+        @extend %bio-icon;
+        @extend %bio-icon-link-out;
+      }
+    }
+
+    span {
+      margin-left: 1.25em;
+    }
+  }
+
+  .article-meta {
+    font-weight: $base-font-weight;
+  }
+
+}
+
+
+
+// TERM PAGE BANNER
+
+.theme-banner {
+  color: $white;
+  position: relative;
+
+  aside {
+    background: rgba(255,255,255,0.6);
+    color: $brand-dark-grey;
+    display: inline-block;
+    font-size: $tiny-font-size;
+    padding: 0 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .theme-banner-explanation {
+    background: white;
+  }
+
+  .container{
+    height: 100%;
+    position: relative;
+
+    &.image {
+      height: 12.5em;
+    }
+
+    &.banner-explanation {
+      border: solid;
+
+      p {
+        color: $brand-text-colour;
+        font-weight: $mid-light-font-weight;
+      }
+
+      .banner-explanation-expanded p:first-child {
+        margin-top: 0;
+      }
+
+      .js-smooth-expand {
+        @include border-radius(0 0 3px 3px);
+        @extend %circle-icon;
+        background-color: $brand-light-grey;
+        bottom: -35px;
+        color: white;
+        display: block;
+        font-weight: $mid-light-font-weight;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 2.25em 0 0.5em;
+        position: absolute;
+        right: 5%;
+        text-decoration: none;
+        z-index: 99;
+
+        &:after {
+          top: 3px;
+          right: 7px;
+        }
+
+      }
+
+    }
+
+  }
+
+  h1 {
+    background-color: $brand-light-grey;
+    bottom: 0;
+    color: white;
+    left: 25px;
+    margin: 0;
+    padding: 0.65em;
+    padding-bottom: 0.4em;
+    position: absolute;
+    text-transform: uppercase;
+
+    &:after, &:before {
+      border-color: transparent transparent $brand-light-grey transparent;
+      border-style: solid;
+      border-width: 0 25px 41px 0px;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 0;
+      position: absolute;
+      width: 0;
+    }
+
+    &:after {
+      right: -25px;
+    }
+
+    &:before {
+      border-width: 0 0 41px 25px;
+      left: -25px;
+    }
+  }
+
+}
+
+
+// TERM PAGE HEADER
+
+.term-header{
+  @include clearfix;
+  padding-bottom: 3.75em;
+
+  h1 {
+    margin-bottom: 2.1em;
+    margin-top: 0.5em;
+    line-height: 3.25rem;
+  }
+
+  .term-header-right{
+    margin-top: 2em;
+  }
+
+  @include breakpoint($small_tablet){
+    .term-header-left{
+      @include span(8 of 12);
+    }
+    .term-header-right{
+      @include span(4 of 12 last);
+      text-align: right;
+      margin-top: 0;
+    }
+  }
+}
+
+// TERM PAGE MAIN CONTENT
+
+.term-main{
+  @extend %body-typography;
+  border-top: 1px solid $brand-light-grey;
+  padding-top: 1em;
+  position: relative;
+
+  @include breakpoint($tablet){
+    @include span(8 of 12);
+  }
+
+  //sections
+  section {
+    @include rhythm(0, 0, 0, 2);
+  }
+
+  > section:first-child {
+    @include rhythm(0);
+
+    p:first-child {
+      margin-top: rhythm(1, 0, 0);
+    }
+
+  }
+
+  //contents
+  .contents{
+    background: $brand-off-white;
+    margin-bottom: 2em;
+    padding: 1.25em;
+    width: 100%;
+
+    @include breakpoint($tablet){
+      width: 75%;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+  }
+
+  //references
+  section.term-references {
+    @include rhythm(4, 0, 0, 0);
+
+    h2 a {
+      @extend %circle-icon;
+      display: block;
+      overflow: visible;
+
+      &:after {
+        background-color: $brand-color-blue;
+        content: "-";
+      }
+
+      &.shown:after {
+        content: "+";
+      }
+
+    }
+
+    li a {
+      position: relative;
+
+      &:after {
+        @extend %bio-icon;
+        @extend %bio-icon-link-out;
+      }
+
+    }
+
+  }
+
+  // Map and images
+  .coverage-map,
+  figure{
+    img{
+      @include res-image;
+    }
+  }
+
+  // Download section
+  .download-large {
+    @include rhythm(2, 0, 0, 0);
+    background-color: $brand-color-blue;
+    margin-bottom: 3rem;
+    margin-bottom: 50px;
+    padding: 1.5em;
+
+    * {
+      color: white;
+      text-decoration: none;
+    }
+
+    h2 {
+      border: none;
+      margin-top: 0;
+      padding-left: 5px;
+      padding-top: 0;
+    }
+
+    p {
+      line-height: 58px;
+      margin-bottom: 0;
+
+      @include breakpoint($small_tablet) {
+        @include typeSize(medium);
+        line-height: 107px;
+      }
+
+      &:before {
+        @include transition(all 0.2s linear);
+        @include border-radius(50%);
+        background-color: $download-blue;
+        background-image: image-url('icon-download-large.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 35%;
+        content: "";
+        height: 60px;
+        float: left;
+        margin-right: 15px;
+        width: 60px;
+
+        @include breakpoint($small_tablet) {
+          height: 110px;
+          margin-right: 30px;
+          width: 110px;
+        }
+      }
+
+      &:hover:before {
+        background-position: center 20px;
+
+        @include breakpoint($small_tablet) {
+          background-position: center 34px;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+// TERM PAGE ARTICLE SIDEBAR
+
+.term-sidebar{
+  @extend %body-typography;
+
+  div {
+    border: 1px solid $brand-light-grey;
+    padding: 1.25em;
+    margin-bottom: 2em;
+  }
+
+  @include breakpoint($tablet){
+    @include span(4 of 12 last);
+  }
+
+  figure {
+    width:100%;
+    margin-bottom: 2em;
+    img{
+      @include res-image;
+    }
+    @include breakpoint($small_tablet){
+      width:50%;
+      margin-left: 1em;
+      float: right;
+    }
+    @include breakpoint($tablet){
+      width: 100%;
+      margin-left: 0;
+      float: none;
+    }
+
+    figcaption {
+      @include adjust-font-size-to(12px);
+      background: $brand-light-grey;
+      padding: 1em;
+    }
+
+  }
+
+  // Last updated
+  .article-meta {
+    margin-bottom: 0;
+  }
+
+  // Sidebar download button
+  .download-small {
+    @include transition(all 0.2s ease-in-out);
+    @include border-radius(5px);
+    border: 1px solid $brand-color-blue;
+    display: block;
+    line-height: 3.25em;
+    margin: 0 auto 3em auto;
+    overflow: hidden;
+    padding: 3px;
+    text-decoration: none;
+    width: 90%;
+
+    @include breakpoint($tablet) {
+      line-height: 1.625em;
+    }
+
+    &:hover {
+      background-color: $brand-color-blue;
+      color: white;
+    }
+
+    &:before {
+      @include transition(all 0.2s ease-in-out);
+      background-color: $brand-color-blue;
+      background-image: image-url('icon-download-large.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      content: "";
+      height: 60px;
+      float: left;
+      margin: -3px 10px -3px -3px;
+      width: 60px;
+      vertical-align: middle;
+
+      @include breakpoint($tablet) {
+        height: 86px;
+      }
+
+      @include breakpoint($desktop) {
+        height: 60px;
+      }
+    }
+
+    &:hover:before {
+      background-position: center 16px;
+    }
+
+  }
+
+}
+
+.term-sidebar-download {
+  @include breakpoint($tablet){
+    @include span(4 of 12 last);
+  }
+}
+
+// TERM PAGE ARTICLE FOOTER
+
+.term-footer{
+  @include rhythm(1,1,1,1);
+  @include pie-clearfix;
+  border: 1px solid $brand-light-grey;
+  clear: both;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: relative;
+  width: 100%;
+
+  h1 {
+    margin-bottom: 3em;
+    margin-top: 0.5em;
+    padding-right: 4em;
+    width: 80%;
+  }
+
+  aside {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+  }
+
+  .circle-buttons a {
+    display: none;
+
+    &.active {
+      display: inline-block;
+    }
+
+  }
+
+  section{
+    margin-bottom: 2em;
+
+    @include breakpoint($small_tablet){
+      @include span(3 of 12);
+      margin-bottom: 0;
+
+      &:last-of-type{
+        @include span(3 of 12 last);
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  > p {
+    float: left;
+    margin: 2em 0 0 0;
+    width: 100%;
+  }
+
+  .no-content {
+    color: $brand-mid-grey;
+  }
+}

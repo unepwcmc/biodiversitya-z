@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Terms::Admin::ThemesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.terms_admin_themes_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_terms_admin_theme_path({parent_id: params[:id]}), :class => "add_icon" %>
+  </li>
+
+  <% if !searching? && ::Refinery::Terms::Admin::TermsController.sortable? && ::Refinery::Terms::Term.many? %>
+    <li>
+      <%= link_to t('.reorder', :what => "Terms"),
+                  refinery.terms_admin_terms_path,
+                  :id => "reorder_action",
+                  :class => "reorder_icon" %>
+
+      <%= link_to t('.reorder_done', :what => "Terms"),
+                  refinery.terms_admin_terms_path,
+                  :id => "reorder_action_done",
+                  :style => "display: none;",
+                  :class => "reorder_icon" %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,9 @@
+<h3 class="<%= 'no-content' unless categories.any? %>">Category:</h3>
+
+<% if categories.any? %>
+  <%= content_tag_for :p, categories do |c| %>
+    <% link_to c.title, refinery.terms_theme_url(c.parent, category_id:c.id) %>
+  <% end %>
+<% else %>
+  <p class="no-content">No categories</p>
+<% end %>

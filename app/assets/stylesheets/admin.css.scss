@@ -1,0 +1,76 @@
+/* ADMIN STYLESHEET */
+
+/*
+
+Don't think this is the best solution; needs to be improved at some point
+
+*/
+
+// General field styles
+
+.field {
+
+	.handle {
+		cursor: move;
+	}
+	.add_fields {
+		color: green;
+		margin-left: 13px;
+	}
+	.remove_fields {
+		color: #900606;
+		opacity: 0.4;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.section-title {
+	font-size: 22px;
+	margin-bottom: 16px;
+}
+
+
+// Expandable sections
+
+.expandable-fields {
+	padding-top: 12px;
+
+	.open-section {
+		cursor: pointer;
+	}
+	.wysiwyg .wym_box {
+		width: 907px !important;
+	}
+
+}
+
+
+// Specific styles
+
+.themes-and-categories {
+	border: none;
+	padding: 0;
+
+	label {
+		display: inline;
+		font-weight: normal;
+
+		&.fieldset-title {
+			display: block;
+			font-weight: bold;
+			margin: 5px 0 15px 0;
+		}
+	}
+
+	> fieldset {
+		margin-bottom: 20px;
+
+		fieldset {
+			margin-top: 0.5em;
+		}
+	}
+
+}

@@ -1,0 +1,43 @@
+/*** GRID AND BREAKPOINT SETUP ***/
+
+// Grid setup
+
+@import "susy";
+@import "breakpoint";
+
+
+// Global default
+$susy: (
+  columns: 6,
+  gutters: 0.4,
+  math: fluid,
+  container-position: center,
+);
+
+// Mid size screens
+$susy_nine_col: (
+  columns: 9,
+  gutters: 0.4,
+  math: fluid,
+  container-position: center,
+);
+
+// Large screens
+$susy_twelve_col: (
+  columns: 12,
+  gutters: 0.4,
+  math: fluid,
+  container-position: center,
+);
+
+// Special grids
+
+$susy_eight_col: (
+  columns: 8,
+  gutters: 0.15,
+  math: fluid,
+  container-position: center
+);
+
+
+// Call on container using @include susy-breakpoint($desktop, $susy_12_col) { ... }

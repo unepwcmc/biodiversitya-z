@@ -1,0 +1,578 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  display: block;
+  border: 1px solid $brand-dark-grey;
+  padding: 0.25em;
+  width: 100%;
+}
+
+
+// SPECIFIC FORM ELEMENTS
+
+// Site search basic
+.site-search {
+  overflow: auto;
+  text-align: right;
+
+  // wrapping element for search and select inputs
+  .input-wrap{
+    display: block;
+    padding: 3px 0.5em 3px 0;
+    position: relative;
+    // overflow: hidden;
+
+    &:after{
+      @extend %bio-icon;
+      @extend %bio-icon-arrow-down;
+      font-size: 1em;
+      height: 100%;
+      line-height: 32px;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: 2em;
+      z-index: 1;
+    }
+  }
+
+  // positioning wrapper for search element
+  .search-field-wrap{
+    overflow: hidden; // this is the secret sauce - don't delete
+
+    input[type="search"]{
+      @extend %t-tiny;
+      @include adjust-leading-to(0.8);
+      border: 0;
+      background: transparent;
+
+      &:focus{
+        outline: none;
+        background: transparent;
+      }
+    }
+  }
+
+  // positioning wrapper for select element
+  .select-field-wrap {
+     float: right;
+     position: relative;
+     z-index: 2;
+     width: 40%;
+  }
+
+  // Styles for custom select element - https://github.com/adamcoulombe/jquery.customSelect
+  .custom.dropdown .current {
+    @extend %t-tiny;
+    background: transparent;
+    border-left: 1px solid $brand-input-grey;
+    cursor: pointer;
+    width: auto;
+    padding-left: 0.5em;
+    white-space: nowrap;
+    text-align: left;
+    width: 100%;
+  }
+  .customSelectInner {
+    margin-right: -0.5em;
+  }
+
+
+  input[type="submit"]{
+    @include border-radius(3px);
+    background-color: $brand-input-blue;
+    background-image: image-url('icon-search.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    display: block;
+    border: 1px solid $brand-input-blue;
+    color: $white;
+    float: right;
+    height: 32px;
+    padding: 0.25em;
+    margin-left: 3px;
+    text-indent: -9999px;
+    width: 32px;
+  }
+
+}
+
+.home-site-search, .header-site-search {
+  .custom.dropdown li {
+    border-bottom: 1px solid rgba($black, 0.05);
+    color: $base-font-color;
+    cursor: pointer;
+    list-style: none;
+    padding: 0.5em;
+    text-align: left;
+
+    &:nth-child(2):hover {
+      background-color: $brand-color-red;
+      color: $white;
+    }
+
+    &:nth-child(3):hover {
+      background-color: $brand-color-green;
+      color: $white;
+    }
+
+    &:nth-child(4):hover {
+      background-color: $brand-color-yellow;
+      color: $white;
+    }
+
+    &:nth-child(5):hover {
+      background-color: $brand-color-turquoise;
+      color: $white;
+    }
+
+    &:nth-child(6):hover {
+      background-color: $brand-color-orange;
+      color: $white;
+    }
+  }
+}
+
+// Site search in header
+
+.header-site-search{
+  @extend .site-search;
+  margin-bottom: 15px;
+  overflow: visible;
+  text-align: right;
+  width: 280px;
+
+  // wrapping element for search and select inputs
+  .input-wrap{
+    @include border-radius(3px);
+    @include background-image(linear-gradient($brand-off-white, $white ) );
+    border: 1px solid $brand-input-grey;
+    padding: 3px 0 3px 0.5em;
+    height: 32px;
+    width: 240px;
+
+    &:after{
+      color: $brand-input-grey;
+    }
+  }
+
+  // positioning wrapper for search element
+  .search-field-wrap{
+    height: 28px;
+  }
+
+  .current {
+    color: $brand-input-grey;
+    display: block;
+    line-height: 20px !important;
+    margin: 3px 0;
+  }
+
+  .custom.dropdown {
+
+    li {
+      @include adjust-font-size-to(12px);
+      @include adjust-leading-to($small-font-leading);
+    }
+  }
+}
+
+.theme-filters, .header-site-search {
+  .custom.dropdown ul {
+    background-color: $white;
+    color: $base-font-color;
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+  }
+}
+
+// Mobile nav search
+
+.mobile-nav-search{
+  @extend .site-search;
+  margin-bottom: 0.5em;
+
+  // wrapping element for search and submit inputs
+  .input-wrap{
+    background: $white;
+    border: 1px solid $brand-input-grey;
+    padding: 0.4em 0.75em;
+    float: left;
+    width: 100%;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  // positioning wrapper for search element
+  .search-field-wrap{
+
+    input[type="search"]{
+      font-size: 1.2em;
+      font-weight: $mid-light-font-weight;
+      line-height: 1.3em;
+      height: 1.2em;
+
+    }
+  }
+
+}
+
+
+// Site search on homepage
+
+.home-site-search{
+  @extend .site-search;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  @include breakpoint($desktop) {
+    width: 80%;
+  }
+
+  .input-wrap {
+    @include border-radius(7px);
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid $white;
+    color: $white;
+    float: none;
+    font-weight: $light-font-weight;
+    height: 70px;
+    padding: 0.7em 1em;
+    width: calc(100% - 80px);
+
+    &:after {
+      display: none;
+      font-size: 1.5em;
+      line-height: 2.75em;
+
+      @include breakpoint($small_tablet) {
+        display: block;
+      }
+
+    }
+  }
+
+  .search-field-wrap {
+    width: 100%;
+
+    @include breakpoint($small_tablet) {
+      display: inline-block;
+      float: left;
+      width: 67%;
+    }
+
+    input[type="search"]{
+      @include adjust-font-size-to(18px);
+      @include adjust-leading-to($medium-font-leading);
+      border: none;
+      background: none;
+
+      &:focus{
+        outline: none;
+        background: transparent;
+      }
+      @include input-placeholder {
+        color: $white;
+      }
+
+      @include breakpoint($tablet){
+        @include adjust-font-size-to(28px);
+        @include adjust-leading-to($large-font-leading);
+      }
+    }
+  }
+
+  .select-field-wrap {
+    display: none;
+    padding: 0.35em;
+
+    @include breakpoint($small_tablet) {
+      display: inline-block;
+      width: 32%;
+    }
+
+
+    select {
+      color: $black;
+      cursor: pointer;
+      font-size: 18px !important;
+    }
+  }
+
+  .custom.dropdown .current {
+    @include adjust-font-size-to(18px);
+    @include adjust-leading-to($medium-font-leading);
+
+    @include breakpoint($tablet){
+      @include adjust-font-size-to(28px);
+      @include adjust-leading-to($large-font-leading);
+    }
+  }
+
+  .custom.dropdown ul {
+    background-color: $white;
+    // box-shadow: 2px 2px 4px rgba($black, 0.2);
+    margin-top: 1.1em;
+    padding: 0;
+  }
+
+  .current {
+    color: $white;
+    display: block;
+    text-decoration: none;
+  }
+
+  input[type="submit"]{
+    @include border-radius(7px);
+    @include transition(all 0.2s ease-in-out);
+    background-color: rgba(0,0,0,0.2);
+    border: 2px solid $white;
+    margin-left: 10px;
+    height: 70px;
+    text-indent: -9999px;
+    width: 70px;
+    vertical-align: top;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.4);
+    }
+  }
+}
+
+
+// Theme view - category select
+
+.theme-filters{
+
+  position: relative;
+
+  .select-field-wrap{
+    position: relative;
+
+    .styled-select{
+      width: 100%!important;
+    }
+  }
+
+  // Styles for custom select element - https://github.com/adamcoulombe/jquery.customSelect
+  .custom.dropdown .current {
+    background: transparent;
+    color: $black;
+    // border: 1px solid $brand-input-grey;
+    height: 3em;
+    line-height: 3em;
+    padding-left: 0.5em;
+    text-align: left;
+    text-decoration: none;
+
+    &:after{
+      @extend %bio-icon;
+      @extend %bio-icon-arrow-down;
+      // background-color: darken($brand-light-grey,10%);
+      color: $white;
+      display: none;
+      font-size: 1.5em;
+      height: 100%;
+      line-height: 2;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: 2em;
+      z-index: -1;
+
+      @include breakpoint($large_mobile) {
+        display: block;
+      }
+    }
+
+    @include breakpoint($tablet) {
+      float: right;
+      width: 100%;
+    }
+  }
+  .custom.dropdown ul {
+    box-shadow: 0 2px 4px rgba($black, 0.1);
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 999;
+
+    li {
+      border-bottom: 1px solid rgba($black, 0.05);
+      cursor: pointer;
+      list-style: none;
+      padding: 0.5em;
+
+      &:hover {
+        color: $white;
+      }
+
+      &.indented {
+        padding-left: 1.5em;
+      }
+    }
+  }
+
+  .customSelectInner {
+    height: 100%;
+    line-height: 3;
+    padding-left: 0.5em;
+  }
+}
+
+.acronyms {
+  .theme-filters {
+    .current {
+      border: 1px solid $brand-color-red;
+
+      &:after {
+        background-color: $brand-color-red;
+      }
+    }
+
+    li:hover {
+      background-color: $brand-color-red;
+    }
+  }
+}
+
+.areas {
+  .theme-filters {
+    .current {
+      border: 1px solid $brand-color-green;
+
+      &:after {
+        background-color: $brand-color-green;
+      }
+    }
+
+    li:hover {
+      background-color: $brand-color-green;
+    }
+  }
+}
+
+.marine {
+  .theme-filters {
+    .current {
+      border: 1px solid $brand-color-turquoise;
+
+      &:after {
+        background-color: $brand-color-turquoise;
+      }
+    }
+
+    li:hover {
+      background-color: $brand-color-turquoise;
+    }
+  }
+}
+
+.terms {
+  .theme-filters {
+    .current {
+      border: 1px solid $brand-color-orange;
+
+      &:after {
+        background-color: $brand-color-orange;
+      }
+    }
+
+    li:hover {
+      background-color: $brand-color-orange;
+    }
+  }
+}
+
+.countries {
+  .theme-filters {
+    .current {
+      border: 1px solid $brand-color-yellow;
+
+      &:after {
+        background-color: $brand-color-yellow;
+      }
+    }
+
+    li:hover {
+      background-color: $brand-color-yellow;
+    }
+  }
+}
+
+
+// Search results page form
+
+.search-results-form {
+  @extend .home-site-search;
+  @include rhythm(1.75, 0, 0, 1.5);
+  width: 100%;
+
+  .input-wrap {
+    @include border-radius(0);
+    background: none;
+    border: 1px solid $brand-dark-grey;;
+    color: $brand-text-colour;
+  }
+
+  .search-field-wrap {
+
+    input[type="search"]{
+      @include input-placeholder {
+        color: $brand-dark-grey;
+      }
+    }
+  }
+
+  input[type="submit"]{
+    @include border-radius(3px);
+    @include transition(all 0.2s ease-in-out);
+    background-color: $brand-input-blue;
+    border: none;
+
+    &:hover {
+      background-color: $brand-input-blue;
+    }
+  }
+}
+
+.custom.dropdown {
+  ul {
+    display: none !important;
+  }
+
+  &.open ul {
+    display: block !important;
+  }
+}
+
+
+select.js-styled-select {
+  display: none;
+}

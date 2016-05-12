@@ -1,0 +1,8 @@
+<section class="contents">
+  <h3><%= copywriting('Contents', { scope: 'Term', default: 'Contents' }) %></h3>
+  <ol>
+    <%= content_tag_for :li, @term.sections do |s| %>
+        <%= link_to s.title, "##{s.title.parameterize}", class: 'term-section-link js-smooth-scroll', :data => {:offset => "100"} %>
+    <% end %>
+  </ol>
+</section>

@@ -1,0 +1,208 @@
+
+
+// TYPOGRAPHY PLACEHOLDERS
+
+
+// Type weights
+
+%t-strong {
+ font-weight: 700;
+}
+%t-regular {
+ font-weight: 400;
+}
+
+
+// Type sizes
+
+%t-tiny {
+ @include typeSize(tiny);
+}
+%t-small {
+ @include typeSize(small);
+}
+%t-base {
+ @include typeSize(base);
+}
+%t-medium {
+ @include typeSize(medium);
+}
+%t-large {
+ @include typeSize(large);
+}
+
+// Type margins
+
+%t-small-margin{
+  @include rhythm(0, 0, 0, 0.25);
+}
+
+%t-base-margin{
+  @include rhythm(0, 0, 0, 1);
+}
+
+// Body typography
+
+%body-typography{
+
+  // Headers - note h1 has a fairly different style to the non body-typography style
+  // the non-body-typography version is used for page headers rather than h1's within a body of text
+
+  h1{
+    @include rhythm(0, 1 ,0, 0.25);
+    @extend %t-medium;
+    @extend %t-base-margin;
+    border-top: 1px solid $brand-light-grey;
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  h2{
+    @include rhythm(0.5, 0.25,0.25, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid $brand-color-navy;
+
+    a{
+      font-weight: $base-font-weight;
+      color: $base-font-color;
+      text-decoration: none;
+
+      &:before{
+        @extend %bio-icon;
+        @extend %bio-icon-caret-down;
+        display: inline-block;
+        font-size: 0.8em;
+        width: 1.5em;
+      }
+
+      &.shown{
+        &:before{
+          @extend %bio-icon-caret-right;
+        }
+      }
+    }
+  }
+
+  // Type elements
+  p{
+    @extend %t-base;
+    @extend %t-base-margin;    
+    color: $brand-text-colour;
+    font-weight: $mid-light-font-weight;
+  }
+
+  ul, ol{
+    @extend %t-base;
+    @extend %t-base-margin;
+    list-style: none;
+    padding: 0;
+
+    &:last-child { margin-bottom: 0 !important; margin-right: 0 !important; }
+
+    li{
+      @extend %t-small-margin;
+      color: $brand-text-colour;
+      font-weight: $mid-light-font-weight;
+      text-indent: 0;
+      padding: 0;
+
+      &:last-child { margin-bottom: 0 !important; margin-right: 0 !important; }
+    }
+  }
+
+  // Links
+
+  a{
+    color: $brand-color-blue;
+    font-weight: $mid-light-font-weight;
+  }
+
+  // Tables
+  table {
+
+    caption {
+      background: $brand-mid-grey;
+      font-weight: $mid-light-font-weight;
+      padding: 8px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    td {
+      border: 1px solid $brand-mid-grey;
+      padding: 8px;
+      vertical-align: top;
+    }
+
+  }
+ 
+}
+
+// Font icons
+
+%bio-icon {
+  font-family: 'biodiversity-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+%bio-icon-arrow-down {
+  content: "\e600";
+}
+%bio-icon-back-arrow {
+  content: "\e601";
+}
+%bio-icon-caret-down {
+  content: "\e602";
+}
+%bio-icon-caret-right {
+  content: "\e603";
+}
+%bio-icon-link-out {
+  content: "\e604";
+  font-size: 12px;
+  position: absolute;
+  right: -15px;
+}
+%bio-icon-magnify {
+  content: "\e605";
+}
+%bio-icon-search {
+  content: "\e606";
+}
+%bio-icon-arrow-right {
+  content: "\e607";
+}
+
+// Circle icons
+
+%circle-icon {
+  position: relative;
+
+  &:after {
+    @include border-radius(50%);
+    background-color: white;
+    color: white;
+    content: "+";
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 2px;
+    width: 20px;
+  }
+
+  &.shown:after {
+    content: "-";
+  }
+}

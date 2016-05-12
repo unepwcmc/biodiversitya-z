@@ -1,0 +1,70 @@
+<script>
+  pageType = "Search results";
+  searchResults = "<%= @count %>";
+</script>
+
+<% content_for :body_class, 'search' %>
+
+<% content_for :title, "Search for '#{params[:q]}'".html_safe %>
+
+<section class="back-banner">
+</section>
+
+<div class="search-results container">
+
+  <%# TODO: Move to use Rails helpers %>
+  <form action="/content" class="search-results-form" onsubmit="
+  dataLayer.push({
+      'event': gtm.click,
+      'eventCategory': 'Search',
+      'eventAction': 'Search clicked',
+      'eventValue': 'Search main'
+  });">
+    <%= render 'refinery/shared/search' %>
+  </form>
+
+  <header class="search-results-summary">
+    <h1>Search for "<%= params[:q] %>"&nbsp;&nbsp;&nbsp;<small><%= @count %> <%= 'result'.pluralize(@count) %> found</small></h1>
+  </header>
+
+  <section class="search-result-matches">
+    <h3><%= copywriting('Exact matches', { scope: 'Terms', default: 'Exact matches' }) %></small></h3>
+    <ul class="exact-results-match">
+    <% if @exact.any? %>
+      <%= content_tag_for :li, @exact do |term| %>
+        <%= term_preview_image(term) %>
+        <%= link_to "#{term.title}<small>&nbsp;&nbsp;(#{term.master_theme_title})</small>".html_safe, refinery.terms_term_path(term) %>
+      <% end %>
+    <% else %>
+      <li>Sorry, no results were found</li>
+    <% end %>
+    </ul>
+  </section>
+
+  <section class="search-result-matches">
+    <h3><%= copywriting('Close matches', { scope: 'Terms', default: 'Close matches' }) %>&nbsp;&nbsp;&nbsp;<small><span>(Search term appears in the title)</span></small></h3>
+    <% if @close.any? %>
+      <ul>
+        <%= content_tag_for :li, @close do |term| %>
+          <% link_to "#{term.title}<small>&nbsp;&nbsp;(#{term.master_theme_title})</small>".html_safe, refinery.terms_term_path(term) %>
+        <% end %>
+      </ul>
+    <% else %>
+      Sorry, no results were found
+    <% end %>
+  </section>
+
+  <section class="search-result-matches">
+    <h3><%= copywriting('Related results', { scope: 'Terms', default: 'Related results' }) %>&nbsp;&nbsp;&nbsp;<small><span>(Search term appears in the definition)</span></small></h3>
+    <% if @body.any? %>
+      <ul>
+        <%= content_tag_for :li, @body do |term| %>
+          <% link_to "#{term.title}<small>&nbsp;&nbsp;(#{term.master_theme_title})</small>".html_safe, refinery.terms_term_path(term) %>
+        <% end %>
+      </ul>
+    <% else %>
+      Sorry, no results were found
+    <% end %>
+  </section>
+
+</div>

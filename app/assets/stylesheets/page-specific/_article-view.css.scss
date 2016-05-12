@@ -1,0 +1,28 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+// ARTICLE PAGE MAIN CONTENT
+
+.article .page-wrap {
+  padding-bottom: 6.666em;
+}
+
+.article-main{
+  @extend %body-typography;
+
+  @include breakpoint($tablet){
+    @include span(8 of 12);
+  }
+}
+
+.article-sidebar{
+  
+  .highlight-box{
+    @extend %body-typography;
+    margin-bottom: 1em;
+  }
+
+  @include breakpoint($tablet){
+    @include span(4 of 12 last);
+  }
+}

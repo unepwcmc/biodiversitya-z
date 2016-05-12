@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+
+    <!-- TITLE -->
+    <title><%= content_for?(:title) ? "" + yield(:title) + " | Biodiversity A-Z" : "Biodiversity A-Z" %></title>
+
+    <!-- META -->
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- FAVICON ETC -->
+    <%= favicon_link_tag 'favicon.ico' %>
+    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= request.protocol + request.host %>/assets/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= request.protocol + request.host %>/assets/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= request.protocol + request.host %>/assets/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" href="<%= request.protocol + request.host %>/assets/apple-touch-icon-57x57.png" />
+
+    <!-- META DESCRIPTION AND OPEN GRAPH -->
+    <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : "A cluster of online glossaries about biodiversity" %>">
+    <meta property='og:title' content="<%= content_for?(:title) ? "" + yield(:title) + "| Biodiversity A-Z" : "Biodiversity A-Z" %>">
+    <meta property='og:type' content="website">
+    <meta property='og:url' content="<%= request.original_url %>">
+    <meta property='og:description' content="<%= content_for?(:meta_description) ? yield(:meta_description) : "A cluster of online glossaries about biodiversity" %>">
+    <meta property='og:image' content="<%= content_for?(:meta_image_url) ? yield(:meta_image_url) : "" + request.protocol + request.host + "/assets/apple-touch-icon-144x144.png" %>">
+
+    <!-- STYLESHEETS -->
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <!--[if lte IE 9]>
+      <%= stylesheet_link_tag "ie", :media => "all" %>
+    <![endif]-->
+
+    <!-- TYPEKIT -->
+    <script type="text/javascript" src="//use.typekit.net/uwc0ryo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <!-- JAVASCRIPT -->
+    <%= javascript_include_tag "application" %>
+    <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <!-- IE8 -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+      <script src="http://html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <![endif]-->
+
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+
+  </head>
+
+  <body class="<%= yield (:body_class) %> <%= yield (:custom_body_class) %>">
+
+  <%= render 'refinery/shared/google' if Rails.env.production? %>
+
+  <%= render 'refinery/shared/header' %>
+  <div class="breadcrumbs">
+    <div class="container">
+      <%= render_breadcrumbs :tag => :span, :separator => "" %>
+    </div>
+  </div>
+  <%= yield %>
+  <%= render 'refinery/shared/footer' %>
+
+  <script type="text/javascript">
+  $('input[type="submit"]').hide();
+
+    $('.search').autocomplete({
+      source: "/search_suggestions",
+      open: function(event, ui){
+
+        $('input[type="submit"]').show();
+
+        var homeAutocompleteWidth = $('.home-site-search').width() - 115;
+        var headerAutocompleteWidth = $('.header-site-search').width();
+        var searchAutocompleteWidth = $('.search-results-form').width() - 115;
+
+        $('.ui-autocomplete').removeClass('home-autocomplete');
+        $('.ui-autocomplete').removeClass('header-autocomplete');
+        $('.ui-autocomplete').removeClass('search-autocomplete');
+
+        console.log($(event.target).closest('form'));
+
+        if ($(event.target).closest('form').hasClass('search-results-form')) {
+          $('.ui-autocomplete').addClass('search-autocomplete');
+          $('.search-autocomplete').css({
+            'min-width': searchAutocompleteWidth,
+            'max-width': '70%'
+          });
+        } else if ($(event.target).closest('form').hasClass('header-site-search')) {
+          $('.ui-autocomplete').addClass('header-autocomplete');
+          $('.header-autocomplete').css({
+            'min-width': headerAutocompleteWidth,
+            'max-width': '200px'
+          });
+        } else {
+          $('.ui-autocomplete').addClass('home-autocomplete');
+          $('.home-autocomplete').css({
+            'min-width': homeAutocompleteWidth,
+            'max-width': homeAutocompleteWidth
+          });
+        }
+      },
+        select: function(event, ui) {
+            window.location.href = ui.item.value;
+            return false;
+        }
+    });
+
+  </script>
+
+  </body>
+</html>

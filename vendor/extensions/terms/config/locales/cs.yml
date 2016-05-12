@@ -1,0 +1,51 @@
+cs:
+  refinery:
+    plugins:
+      themes:
+        title: Themes
+      terms:
+        title: Terms
+    terms:
+      admin:
+        themes:
+          actions:
+            create_new: Přidat Theme
+            reorder: Řadit Themes
+            reorder_done: Konec řazení Themes
+          records:
+            title: Themes
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Themes. Zvolte "Přidat Theme"
+              pro přidání prvního theme.
+          theme:
+            view_live_html: Zobrazit náhled theme<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit theme
+            delete: Smazat theme
+        terms:
+          actions:
+            create_new: Přidat Term
+            reorder: Řadit Terms
+            reorder_done: Konec řazení Terms
+          records:
+            title: Terms
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Terms. Zvolte "Přidat Term"
+              pro přidání prvního term.
+          term:
+            view_live_html: Zobrazit náhled term<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit term
+            delete: Smazat term
+      themes:
+        show:
+          other: Další Themes
+      terms:
+        show:
+          other: Další Terms
+  activerecord:
+    attributes:
+      refinery/terms/theme:
+        title: Title
+      refinery/terms/term:
+        title: Title
+        definition: Definition
+        description: Description

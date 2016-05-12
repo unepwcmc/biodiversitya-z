@@ -1,0 +1,10 @@
+<h3 class="<%= 'no-content' unless tools.any? %>"><%= copywriting('Term tools', { scope: 'Term', default: 'Tools' }) %></h3>
+<ul class="external-links">
+  <% if tools.any? %>
+    <%= content_tag_for :li, tools do |c| %>
+      <% "#{link_to(c.title, c.url, target: :blank)} #{content_tag :span, c.description}".html_safe %>
+    <% end %>
+  <% else %>
+    <li class="no-content">No tools</li>
+  <% end %>
+</ul>

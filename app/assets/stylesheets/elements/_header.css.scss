@@ -1,0 +1,514 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+
+.page-header{
+   position: relative;
+}
+
+// HEADER POSITIONING
+
+.initial-header,
+.fixed-header{
+  width: 100%;
+
+  @include breakpoint($tablet){
+    .container{
+      position: relative;
+    }
+  }
+}
+
+.initial-header{
+  position: relative;
+  z-index: 997;
+  .container{
+    padding: 35px 0 20px;
+
+    @include breakpoint($tablet){
+      padding: 35px 0 0;
+    }
+  }
+}
+
+.fixed-header{
+  background: white;
+  border-bottom: 20px solid $brand-color-teal;
+  bottom: 100%;
+  display: block;
+  margin-bottom: -20px;
+  position: fixed;
+  z-index: 999;
+
+  .container{
+    padding: 5px 0;
+
+    @include breakpoint($tablet){
+      padding: 5px 0;
+    }
+  }
+
+
+   &.bottom-shadow{
+    &:after{
+      @include background-image(linear-gradient(rgba($black, 0.5), rgba($black, 0) ) );
+      content:"";
+      display: block;
+      height: 20px;
+      width: 100%;
+      position: absolute;
+      bottom: -40px;
+    }
+  }
+
+  .brand-logo{
+
+    .bio-logo {
+      height: 50px;
+      width: 200px;
+    }
+
+  }
+
+  .primary-header-nav {
+    margin-top: 10px;
+  }
+
+  .header-site-search {
+    margin-bottom: 0;
+  }
+
+  .parent-menu {
+    display: none;
+  }
+
+}
+
+
+// BRAND LOGO
+.brand-logo{
+  @include clearfix;
+  float: left;
+  margin: 0;
+
+  @include breakpoint($tablet) {
+    margin: 3px 0 15px 0;
+  }
+
+  .divider {
+    border-right: 1px solid $brand-mid-grey;
+    display: block;
+    float: left;
+    height: 45px;
+    margin: 0 10px;
+    width: 1px;
+
+    @include breakpoint($large_mobile) {
+      height: 55px;
+      margin: 0 15px;
+    }
+  }
+
+  a{
+    display: block;
+    float: left;
+
+    &.bio-logo{
+      background-image: image-url('logo-main.jpg');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 100%;
+      height: 45px;
+      margin: 0;
+      width: 165px;
+
+      @include breakpoint($large_mobile) {
+        height: 55px;
+        width: 210px;
+      }
+    }
+
+    &.wcmc-logo{
+      background-image: image-url('logo-wcmc.jpg');
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: 99%;
+      float: left;
+      height: 40px;
+      margin-top: 2px;
+      width: 75px;
+
+      @include breakpoint($large_mobile) {
+        height: 54px;
+        width: 95px;
+      }
+    }
+  }
+}
+
+// Header Variations
+
+.initial-header .brand-logo{
+
+  @include breakpoint($tablet){
+
+    a{
+      display: inline-block;
+      vertical-align: top;
+      &.bio-logo{
+
+      }
+      &.wcmc-logo{
+
+      }
+    }
+  }
+}
+
+.fixed-header .brand-logo{
+  float: left;
+  text-align: left;
+  margin:  0;
+
+}
+
+
+
+
+// MOBILE MENU TOGGLE SWITCH
+
+.mobile-menu-toggle{
+  background: $brand-color-teal;
+  color: $white;
+  display: block;
+  float: right;
+  height: 40px;
+  line-height: 40px;
+  margin: 3px auto 0 auto;
+  padding: 0 0.25em;
+  text-decoration: none;
+  text-align: center;
+
+  @include breakpoint($tablet){
+    display: none!important;
+  }
+}
+
+
+// MAIN HEADER NAVIGATION
+
+
+.primary-header-nav{
+
+  display: none;
+  float: right;
+
+  @include breakpoint($tablet){
+    display: block;
+  }
+
+  .site-search{
+    display: block;
+    text-align: right;
+
+    > * {
+      display: inline-block;
+    }
+  }
+
+  .parent-menu{ // ul
+    @include pie-clearfix;
+    @include styled-list;
+    clear: both;
+    margin: 5px 0 0 0;
+    overflow: auto;
+
+   > li{
+      float: right;
+      height: 100%;
+      padding-bottom: 15px;
+
+      > a{
+        @extend %t-tiny;
+        @include rhythm(0, 0.5, 0.5, 0);
+        color: $base-font-color;
+        font-weight: $base-font-weight;
+        height: 100%;
+        line-height: 16px;
+        padding: 0 1.5em;
+        text-transform: uppercase;
+      }
+
+      &:first-child > a {
+        padding-right: 0;
+      }
+
+      &:nth-child(3) > a {
+        border-right: 1px solid $base-font-color;
+      }
+
+      &:hover > .child-menu {
+        margin-top: -0.5em;
+        top: 100%;
+        visibility: visible;
+      }
+    }
+  }
+
+  .child-menu{ // ul
+    @include styled-list;
+    background: white;
+    position: absolute;
+    right: 0;
+    top: 1em;
+    visibility: hidden;
+    z-index: 8999;
+
+    li{
+      width: 100%;
+      float: none;
+    }
+
+    a{
+      @extend %t-tiny;
+      @include rhythm(0, 0.5, 0.5, 0);
+      color: $base-font-color;
+      font-weight: $base-font-weight;
+      height: 100%;
+      line-height: 16px;
+      padding: 0.5em 1.5em;
+      text-transform: uppercase;
+    }
+    figure{
+      padding: 2.5%;
+    }
+    img{
+      @include res-image;
+    }
+
+    &.browse-menu {
+      border-top: 5px solid $brand-color-teal;
+      box-shadow: 0 2px 4px rgba($black, 0.1);
+
+      a {
+        letter-spacing: 2px;
+        padding: 1.5em 2.5em;
+
+        &:before {
+          @include border-radius(50%);
+          display: inline-block;
+          content: "";
+          height: 3em;
+          margin: -1px 1em 0 0;
+          vertical-align: middle;
+          width: 3em;
+        }
+      }
+
+      span {
+        display: block;
+        padding: 1.5em 2em;
+      }
+    }
+
+    &.about{
+      width: 200px;
+      right: 0;
+    }
+  }
+}
+
+// Header Variations
+.home {
+
+  .initial-header .brand-logo {
+    @include breakpoint($small_tablet) {
+      .divider {
+        height: 70px;
+        margin: 0 25px;
+      }
+      a{
+        &.bio-logo{
+            height: 70px;
+            width: 300px;
+        }
+        &.wcmc-logo{
+          height: 50px;
+          margin-top: 10px;
+          width: 95px;
+        }
+      }
+    }
+  }
+
+  .initial-header {
+    .brand-logo {
+      margin-top: 0;
+    }
+    .primary-header-nav {
+      margin-top: 45px;
+    }
+  }
+
+  .header-site-search {
+    display: none;
+  }
+
+  .parent-menu {
+    display: block;
+  }
+
+  .primary-header-nav {
+
+    .parent-menu > li:last-child {
+      display: none;
+    }
+
+  }
+
+}
+
+
+// MOBILE HEADER NAVIGATION
+
+
+.mobile-header-nav{
+  border-bottom: 10px solid $brand-color-teal;
+  border-top: 10px solid $brand-color-teal;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+
+  .parent-menu{
+    @include styled-list;
+    background: white;
+    padding: 1em 0;
+
+    > li > a, form {
+      padding-left: 1em;
+      padding-right: 1em;
+
+      &.active {
+        background: $brand-color-teal;
+        color: white;
+      }
+    }
+
+  }
+
+  .child-menu{
+    @include styled-list;
+    display: none;
+
+    li a {
+      padding-left: 2em;
+    }
+  }
+
+  .browse-menu {
+    margin-top: 1em;
+
+    li a {
+      padding: 0.5em 1em;
+    }
+
+    a:before {
+      @include border-radius(50%);
+      display: inline-block;
+      content: "";
+      height: 2em;
+      margin: -1px 1em 0 0;
+      vertical-align: middle;
+      width: 2em;
+    }
+
+    span {
+      display: block;
+      padding: 0.5em 1em;
+    }
+  }
+
+  a {
+    color: $base-font-color;
+    padding: 0.25em 0;
+  }
+
+  @include breakpoint($tablet){
+    display: none!important;
+  }
+}
+
+.breadcrumbs {
+  border-top: 1px solid rgba($black, 0.05);
+  display: none;
+
+  @include breakpoint($tablet) {
+    display: block;
+  }
+
+  .container {
+    height: 31px;
+    overflow: hidden;
+  }
+
+  span {
+    display: inline-block;
+    position: relative;
+
+    &:hover {
+
+      a {
+        background-color: darken(#F2F2F2, 5%);
+      }
+
+      &:after {
+        border-color: transparent transparent transparent darken(#F2F2F2, 5%);
+      }
+    }
+
+    &:before {
+      border-color: transparent transparent transparent $white;
+      border-style: solid;
+      border-width: 31px 0 31px 24px;
+      content: "";
+      height: 0;
+      position: absolute;
+      right: -15px;
+      top: -15.5px;
+      width: 0;
+      z-index: 1;
+    }
+
+    &:after {
+      border-color: transparent transparent transparent #F2F2F2;
+      border-style: solid;
+      border-width: 31px 0 31px 24px;
+      content: "";
+      height: 0;
+      position: absolute;
+      right: -10px;
+      top: -15.5px;
+      transition: all 0.3s ease-out;
+      width: 0;
+      z-index: 2;
+    }
+  }
+
+  a {
+    background-color: #F2F2F2;
+    color: $base-font-color;
+    display: inline-block;
+    font-size: 0.8em;
+    height: 31px;
+    max-width: 200px;
+    overflow: hidden;
+    padding: 0.2em 3.2em;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 0.3s ease-out;
+    white-space: nowrap;
+  }
+}

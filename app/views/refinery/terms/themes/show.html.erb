@@ -1,0 +1,71 @@
+<% content_for :body_class, @theme.title.parameterize %>
+
+<script>
+  pageType = "Theme homepage";
+  themeName = "<%= @theme.title %>";
+  themeVisit = "<%= params[:s] %>";
+</script>
+
+<% content_for :title, @theme.title %>
+
+<section class="page-banner theme-banner" role="banner" style='background-image: url(<%= background_image(@theme.banner, '2400x200#') %>)'>
+
+  <aside><%= raw @theme.image_citation %></aside>
+
+  <div class="container image">
+
+    <h1 class="h3"><%= raw @theme.tagline %></h1>
+
+  </div>
+
+  <section class="theme-banner-explanation">
+
+    <div class="container banner-explanation">
+
+      <p><%= raw @theme.synopsis %></p>
+
+      <span class="banner-explanation-expanded"><%= raw @theme.description %></span>
+
+      <a href=".banner-explanation-expanded" class="js-smooth-expand shown" data-alternativetext="Read more" data-normaltext="Read less">Read less</a>
+
+    </div>
+
+  </section>
+
+</section>
+
+<article class="page-wrap with-gradient">
+
+  <div class="container">
+
+    <section class="theme-filters">
+
+      <div class="filter-row clearfix">
+
+        <h2><%= copywriting('By category', { scope: 'Theme', default: 'Filter by category:' }) %></h2>
+
+        <div class="select-field-wrap filter clearfix">
+        <%= form_tag refinery.terms_theme_path(@theme), :method => :get, id: :category_select, class: 'custom' do %>
+            <%= select_tag 'category_id', options_for_theme_category_select(@theme, params[:category_id]), class: 'js-styled-select styled-select', onchange: "$('#category_select').submit();" %>
+        <% end %>
+      </div>
+
+      </div>
+
+      <%= render 'category_description' if @category.parent_id.present? %>
+
+    </section>
+
+    <section class="az-term-list">
+      <ul class="az-terms">
+        <%= render partial: 'letter', collection: @letters %>
+      </ul>
+
+      <aside class="back-to-top">
+        <a href=".page-wrap.with-gradient" class="js-smooth-scroll" data-offset="20">Back to top</a>
+      </aside>
+    </section>
+
+  </div>
+
+</article>

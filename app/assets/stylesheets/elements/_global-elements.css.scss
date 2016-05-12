@@ -1,0 +1,167 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+/* START GLOBAL ELEMENT STYLES */
+
+
+
+// UNIVERSAL STUFF
+
+*{
+  @include box-sizing(border-box);
+}
+
+html, body {
+  height: 100%;
+  min-width: 400px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+
+// RESET FUNKY NORMALIZE RULES
+
+figure{
+  margin: 0;
+}
+
+
+
+// BASE CONTAINER
+
+.container{
+  @include container();
+  max-width: 94%;
+
+  @include breakpoint($large_mobile){
+    max-width: 90%;
+  }
+
+  @include susy-breakpoint($tablet, $susy_nine_col){
+     max-width: 85%;
+  }
+
+  @include susy-breakpoint($desktop, $susy_twelve_col){
+    width: $desktop;
+  }
+}
+
+
+
+// PAGE WRAPPER (wraps main content of page)
+
+.page-wrap{
+  padding-top: 6.666em;
+
+  // Page specific variations
+
+  &.with-gradient{
+    position: relative;
+    &:before{
+      @include background-image(linear-gradient($brand-off-white, rgba($brand-off-white, 0) ) );
+      content:"";
+      display: block;
+      height: 3.333em;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+
+// NAVIGATION - GENERAL
+
+.nav{
+  width: 100%;
+
+  @include breakpoint($tablet){
+    width: auto;
+  }
+
+  a{
+    display: block;
+    text-decoration: none;
+  }
+}
+
+// PAGE BANNERS - GENERAL
+
+.page-banner {
+  background-color: darken($brand-light-grey, 10%);
+  background-position: top center;
+  background-repeat: no-repeat;
+  border-bottom: 5px solid darken($brand-light-grey, 5%);
+
+  &.home-banner {
+    background-size: cover;
+  }
+
+  .container{
+    position: relative;
+  }
+}
+
+.back-banner {
+  border-bottom: 5px solid darken($brand-light-grey, 5%);
+  position: relative;
+
+  .container{
+    height: 2em;
+    position: relative;
+  }
+}
+
+// Highlight box
+
+ .highlight-box{
+  @extend %body-typography;
+  background: $brand-light-grey;
+  padding: 1em;
+  position: relative;
+
+  &:before{
+    content: "";
+    height: 0;
+    border-style: solid;
+    border-width: 0 40px 40px 0;
+    border-color: transparent darken($brand-light-grey, 10%) transparent transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+  }
+}
+
+// JS-snippet-specific
+
+.hidden {
+  display: none;
+}
+
+// Images within paragraphs (uploaded by editor)
+p img {
+  height: auto;
+  max-width: 100%;
+}
+
+.hidden-field {
+  display: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}

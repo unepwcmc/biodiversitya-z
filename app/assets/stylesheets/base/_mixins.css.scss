@@ -1,0 +1,187 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-sizing";
+@import "compass/css3/user-interface";
+@import "compass/css3/columns";
+@import "compass/css3/opacity";
+@import "compass/utilities/general/clearfix";
+@import "compass/utilities/text/replacement";
+@import "compass/typography/vertical_rhythm";
+
+
+
+
+// MISC MIXINS
+
+// Transition mixin:  (Req Sass 3.2+) - usage: @include transition(all 0.2s ease-in-out);
+@mixin transition($transition...) {
+  // defining prefixes so we can use them in mixins below
+  $prefixes:      ("-webkit-", "" );
+  @each $prefix in $prefixes {
+    #{$prefix}transition: $transition;
+  }
+}
+
+// Basic list with no styles - applied to list itself
+@mixin styled-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li{
+    text-indent: 0;
+    padding: 0;
+  }
+}
+
+@mixin res-image{
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+// Typesize mixin from
+//https://medium.com/@amlinarev/using-sass-compass-vertical-rhythm-to-set-up-typography-defaults-in-a-project-34fe2f1d2c02
+
+@mixin typeSize($size) {
+
+  @if $size == "tiny" {
+    @include adjust-font-size-to($tiny-font-size);
+    @include adjust-leading-to($tiny-font-leading);
+  }
+  @if $size == "small" {
+    @include adjust-font-size-to($small-font-size);
+    @include adjust-leading-to($small-font-leading);
+  }
+  @if $size == "base" {
+    @include adjust-font-size-to($base-font-size);
+    @include adjust-leading-to($base-font-leading);
+  }
+  @if $size == "medium" {
+    @include adjust-font-size-to($medium-font-size);
+    @include adjust-leading-to($medium-font-leading);
+  }
+  @if $size == "large" {
+    @include adjust-font-size-to($large-font-size);
+    @include adjust-leading-to($large-font-leading);
+  }
+
+}
+
+// Colour UI variation mixin
+// Styles various UI elements accorindg to the heme/type of page (see elements/colour-variations)
+
+@mixin ui-color($color){
+
+  // Banners
+
+  .page-banner{
+    border-bottom: 5px solid $color;
+
+    .theme-banner-explanation {
+      border-top: 5px solid $color;
+
+      .container.banner-explanation .js-smooth-expand {
+        background: $color;
+
+        &:after {
+          color: $color;
+        }
+      }
+
+    }
+
+    h1 {
+      background: $color;
+
+      &:after, &:before {
+        border-color: transparent transparent $color transparent;
+      }
+
+    }
+
+  }
+
+  .back-banner{
+    border-bottom: 5px solid $color;
+  }
+
+  .back-btn{
+    background-color: $color;
+  }
+
+  .fixed-header.bottom-shadow {
+    border-bottom-color: $color;
+  }
+
+  // Global elements
+
+  .highlight-box:before{
+    border-color: transparent $color transparent transparent;
+  }
+
+  // Theme page elements
+
+  .theme-filters{
+    .customSelect{
+      border: 1px solid $color;
+      &:after{
+        background-color: $color;
+      }
+    }
+  }
+
+  // Term page elements
+
+  .toggle-section{
+    h2 a:before{
+      color: $color;
+    }
+  }
+
+}
+
+@mixin circle-btn-ui-color($color){
+  &.active{
+    border: 2px solid $color;
+    background: $color;
+  }
+  &:hover{
+    border: 2px solid $color;
+    background: $color;
+  }
+}
+
+@mixin menu-btn-ui-color($color){
+  &:before {
+    background: $color;
+  }
+
+  &:hover {
+    background: $color;
+    color: white;
+
+    &:before {
+      background: white;
+    }
+  }
+}
+
+@mixin home-ui-color($color){
+
+  a figure {
+    border: 3px solid $color;
+
+    &:hover {
+      background-color: $color;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      background-size: 55%;
+    }
+
+    h3 {
+      color: $color;
+    }
+
+  }
+
+}

@@ -1,0 +1,72 @@
+<%= form_for [refinery, :terms_admin, @theme] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @theme,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :title, "Short title &nbsp;<small style='opacity: 0.6;'>(Appears in theme circles)</small>".html_safe -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :tagline, "Long title &nbsp;<small style='opacity: 0.6;'>(Appears in banners)</small>".html_safe -%>
+    <%= f.text_field :tagline -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :synopsis, "Synopsis &nbsp;<small style='opacity: 0.6;'>(Short description of theme, always visible in banners)</small>".html_safe -%>
+    <%= f.text_field :synopsis, :class => 'widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+               :f => f,
+               :fields => [:description],
+               :object => "terms/term" -%>
+  </div>
+
+  <div class="field">
+    <%= f.label :logo %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+            :f => f,
+            :field => :logo_id,
+            :image => f.object.logo,
+            :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class="field">
+    <%= f.label :banner, "Banner image" %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+            :f => f,
+            :field => :banner_id,
+            :image => f.object.banner,
+            :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :image_citation -%>
+    <%= f.text_field :image_citation -%>
+  </div>
+
+  <div class="field">
+    <%= f.label :icon, "Homepage icon" %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+            :f => f,
+            :field => :icon_id,
+            :image => f.object.icon,
+            :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <%= params[:parent_id] ? f.hidden_field(:parent_id, value:params[:parent_id]) : f.hidden_field(:parent_id) %>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.themes.admin.themes.theme'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @theme.title) -%>
+<% end -%>

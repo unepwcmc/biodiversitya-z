@@ -1,0 +1,7 @@
+<%= check_box_tag("term[association_ids][]", category.id, @term.categories.include?(category), data: { association: category.id}) %>
+<%= label_tag category.title, category.title, class: "clearfix" %>
+
+
+<fieldset class="children depth_3">
+  <%= render partial: 'subcategory', collection: category.children, as: 'subcategory' %>
+</fieldset>

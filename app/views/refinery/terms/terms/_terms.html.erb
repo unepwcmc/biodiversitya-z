@@ -1,0 +1,10 @@
+<h3 class="<%= 'no-content' unless terms.any? %>"><%= copywriting('Related terms', { scope: 'Term', default: 'Related Terms' }) %></h3>
+<ul>
+  <% if terms.any? %>
+    <%= content_tag_for :li, terms do |c| %>
+      <% link_to "#{c.title}  <small>(#{c.master_theme_title})</small>".html_safe, refinery.terms_term_path(c) %>
+    <% end %>
+  <% else %>
+    <li class="no-content">No related pages</li>
+  <% end %>
+</ul>

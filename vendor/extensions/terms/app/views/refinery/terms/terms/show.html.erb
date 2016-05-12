@@ -1,0 +1,43 @@
+
+<% content_for :body_content_title do %>
+  <%= @term.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Title</h1>
+    <p>
+      <%=raw @term.title %>
+    </p>
+  </section>
+  <section>
+    <h1>Definition</h1>
+    <p>
+      <%=raw @term.definition %>
+    </p>
+  </section>
+  <section>
+    <h1>Description</h1>
+    <p>
+      <%=raw @term.description %>
+    </p>
+  </section>
+
+  <section class="contents">
+    <h2>Contents</h2>
+    <ol>
+      <%= content_tag_for :li, @term.sections do |s| %>
+        <%= link_to s.title, "##{s.title.parameterize}", class: 'term-section-link' %>
+      <% end %>
+    </ol>
+  </section>
+
+  <%= render partial: 'section', collection: @term.sections, as: :section %>
+
+<% end %>
+
+<% content_for :side_body do %>
+  <%= output_themes_for_term(@themes, @term) %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -1,0 +1,112 @@
+/* MAIN STYLESHEET - ONLY IMPORT PARTIALS INTO THIS FILE */
+
+/*
+
+During development you may wish to use sprockets in order to keep livereloads nice and snappy.
+
+As files served via sprockets do not 'talk' to one another you cannot use global elements
+such as variables and mixins.  To get around this, create a file called _all-globals.scss
+in stylesheets and @import the base sheets you will need to use in other stylesheets.
+Then @import this all-globals sheet at the top of each of the other stylesheets that
+might need those values/mixins.
+
+IMPORTANT - to avoid unneccessary repeats of styles in each stylesheet that calls _all-globals,
+you should not import into _all-globals any stylesheets that contain styles that would be
+printed to the compiled stylesheet.  Therefore only variables, mixins, functions and placeholder
+styles (that would be extended) should be included.
+
+*/
+
+//= require ./_all-globals
+
+//= require ./base/_reset
+//= require ./base/_fonts
+//= require ./base/_vars
+
+//= require ./elements/_global-elements
+//= require ./elements/_typography
+//= require ./elements/_header
+//= require ./elements/_footer
+//= require ./elements/_buttons
+//= require ./elements/_forms
+//= require ./elements/_color-variations
+
+//= require ./page-specific/_term-view
+
+.brand-logo {
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 0;
+  width: 100%;
+}
+
+.page-banner {
+  display: none !important;
+}
+
+.page-wrap {
+  background: white !important;
+  background-image: none !important;
+  padding-top: 0 !important;
+
+  &:before {
+    display: none !important;
+  }
+}
+
+.term-title {
+  font-size: 30px;
+  line-height: 50px;
+
+  a {
+    color: #454545;
+    text-decoration: none;
+  }
+
+  &:before, &:after {
+    display: none;
+  }
+}
+
+h2 {
+  letter-spacing: 0 !important;
+}
+
+table td {
+  padding: 8px !important;
+}
+
+.term-header-left, .term-main {
+  ul, ol {
+    padding-left: 1.5em !important;
+  }
+
+  ul li {
+    list-style: disc !important;
+  }
+
+  ol li {
+    list-style: decimal !important;
+  }
+}
+
+.js-toggle-content:before, .js-toggle-content:after {
+  display: none !important;
+}
+
+.term-references .js-section-content {
+  display: block !important;
+}
+
+.circle-buttons {
+  margin-bottom: 1.5em !important;
+  margin-top: -1em !important;
+}
+
+.description {
+  margin-bottom: 4em;
+}
+
+.term-sidebar figure {
+  width: 50%;
+}

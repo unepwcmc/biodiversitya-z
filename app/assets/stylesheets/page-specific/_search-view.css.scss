@@ -1,0 +1,81 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+.search-back{
+
+}
+
+// SEARCH RESULTS STYLES
+
+.search-results-summary{
+  @include clearfix;
+  @include rhythm(1.5,0,0,2);
+
+  h1{
+    @include adjust-font-size-to(28px);
+    @include rhythm(2,0,1,0);
+    font-family: $base-font-family;
+    font-weight: $mid-light-font-weight;
+  }
+
+  @include breakpoint($large_mobile){
+    h1{
+      float:left;
+      margin-top: 0;
+    }
+    a{
+      float:right;
+    }
+  }
+}
+
+.search-result-matches{
+
+  @include rhythm(0,0,0,3);
+  @extend %body-typography;
+
+  h3{
+    @include rhythm(1,0,1,1);
+    border-bottom: 1px solid $brand-light-grey;
+
+    span {
+      opacity: 0.5;
+    }
+  }
+  ul{
+    @include styled-list;
+
+    small {
+      display: inline-block;
+      vertical-align: baseline;
+    }
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+ul.exact-results-match {
+  background-color: #F9F9F9;
+  padding: 2em;
+
+  li {
+    margin-bottom: 3em;
+  }
+
+  img {
+    display: inline-block;
+    margin-right: 1em;
+    vertical-align: top;
+  }
+
+  a {
+    font-size: 1.8em;
+    font-weight: 400;
+  }
+}

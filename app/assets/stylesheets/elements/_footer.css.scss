@@ -1,0 +1,98 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+
+/* START PAGE FOOTER STYLES */
+
+.page-footer{
+  background-color: $brand-color-navy;
+  padding: 3em 3em 12em 3em;
+
+  @include breakpoint($large_tablet) {
+    padding-bottom: 3em;
+  }
+
+  .container {
+    position: relative;
+    overflow: visible;
+  }
+
+  .unep-wcmc {
+    @include transition(all 0.2s ease-in-out);
+    background-image: image-url('logo-wcmc-white.png');
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-size: 130px 70px;
+    bottom: -160px;
+    height: 70px;
+    left: 50%;
+    margin-left: -65px;
+    margin-top: -35px;
+    opacity: 0.8;
+    position: absolute;
+    width: 130px;
+
+    @include breakpoint($large_mobile) {
+      bottom: -120px;
+    }
+
+    @include breakpoint($large_tablet) {
+      left: 0;
+      top: 50%
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+}
+
+.home .page-footer .container {
+  margin-bottom: 2em;
+}
+
+.footer-nav{
+  height: 1em;
+  text-align: center;
+  width: 100%;
+
+  @include breakpoint($large_tablet) {
+    float: right;
+    width: auto;
+  }
+
+  a{
+    @include transition(all 0.2s ease-in-out);
+    @include adjust-font-size-to(12px);
+    color: white;
+    display: inline-block;
+    font-weight: $mid-light-font-weight;
+    line-height: 1.75;
+    margin: 0 0.75em;
+    opacity: 0.8;
+    position: relative;
+    text-transform: uppercase;
+
+    @include breakpoint($large_tablet) {
+      float: left;
+    }
+
+    &:hover{
+      opacity: 1;
+    }
+
+    &:after {
+      content: "\2022";
+      display: block;
+      opacity: 0.7;
+      position: absolute;
+      right: -1em;
+      top: -1px;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,4 @@
+<figure>
+  <%= image_fu(@term.featured_image, '490x350#') %>
+  <%= content_tag :figcaption, @term.caption unless @term.caption.nil? %>
+</figure>

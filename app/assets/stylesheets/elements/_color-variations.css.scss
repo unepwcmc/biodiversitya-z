@@ -1,0 +1,90 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+
+/*
+The UI colours throughout the site are primarily styled via body class.
+
+The selectors below are all body classes and use a generic mixin to change the various
+coloured UI elements throughout the site
+
+Please note the the coloured theme circles are a special case and have their own mixin
+and set of selectors - please see elements/buttons
+*/
+
+
+.article{
+  @include ui-color($brand-color-blue);
+}
+
+.search{
+  @include ui-color($brand-color-blue);
+}
+
+// individual themes
+.areas{
+  @include ui-color($brand-color-green);
+}
+.terms{
+  @include ui-color($brand-color-orange);
+}
+.marine{
+  @include ui-color($brand-color-turquoise);
+}
+.acronyms{
+  @include ui-color($brand-color-red);
+}
+.countries {
+  @include ui-color($brand-color-yellow);
+}
+
+// homepage theme browser
+.home-theme-browser .theme-list .areas {
+  @include home-ui-color($brand-color-green);
+}
+.home-theme-browser .theme-list .terms {
+  @include home-ui-color($brand-color-orange);
+}
+.home-theme-browser .theme-list .marine {
+  @include home-ui-color($brand-color-turquoise);
+}
+.home-theme-browser .theme-list .acronyms {
+  @include home-ui-color($brand-color-red);
+}
+.home-theme-browser .theme-list .countries {
+  @include home-ui-color($brand-color-yellow);
+}
+
+// circle theme buttons
+.circle-buttons a.areas {
+  @include circle-btn-ui-color($brand-color-green);
+}
+.circle-buttons a.terms {
+  @include circle-btn-ui-color($brand-color-orange);
+}
+.circle-buttons a.marine {
+  @include circle-btn-ui-color($brand-color-turquoise);
+}
+.circle-buttons a.acronyms {
+  @include circle-btn-ui-color($brand-color-red);
+}
+.circle-buttons a.countries {
+  @include circle-btn-ui-color($brand-color-yellow);
+}
+
+// menu buttons
+.browse-menu .areas {
+  @include menu-btn-ui-color($brand-color-green);
+}
+.browse-menu .terms {
+  @include menu-btn-ui-color($brand-color-orange);
+}
+.browse-menu .marine {
+  @include menu-btn-ui-color($brand-color-turquoise);
+}
+.browse-menu .acronyms {
+  @include menu-btn-ui-color($brand-color-red);
+}
+.browse-menu .countries {
+  @include menu-btn-ui-color($brand-color-yellow);
+}

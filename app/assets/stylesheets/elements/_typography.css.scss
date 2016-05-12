@@ -1,0 +1,137 @@
+/* IMPORT ALL GLOBALS */
+@import "../_all-globals";
+
+
+/* START TYPOGRAPHY STYLES */
+
+@include establish-baseline;
+
+html{
+  font-family: $base-font-family;
+  font-weight: $light-font-weight
+}
+
+h1, .h1{
+  @extend %t-large;
+  @extend %t-base-margin;
+  font-family: $header-font-family;
+  font-weight: $base-font-weight
+}
+h2, .h2{
+  @extend %t-small;
+  @extend %t-base-margin;
+  font-family: $base-font-family;
+  font-weight: $base-font-weight
+}
+h3, .h3{
+  @extend %t-base;
+  @extend %t-small-margin;
+  font-family: $base-font-family; 
+  font-weight: $base-font-weight 
+}
+
+
+// Special headers and typography
+
+// Home - main banner tagline
+.home-banner {
+  .tagline{
+    @include adjust-font-size-to(20px);
+    @include adjust-leading-to($large-font-leading);
+    @include rhythm(0, 0, 0, 1.25);
+    color: $white;
+    font-family: $base-font-family;
+    text-align: center;
+
+    @include breakpoint($large_mobile){
+      @include adjust-font-size-to(32px);
+      @include adjust-leading-to(1.55);
+    }
+  }
+}
+
+// Home - theme browser heading and theme subheadings
+.home-theme-browser{
+  h2{
+    @include adjust-font-size-to(32px);
+    @include adjust-leading-to($large-font-leading);
+    font-weight: $mid-light-font-weight;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  h3{
+    @include adjust-font-size-to(22px);
+    @include adjust-leading-to($large-font-leading);
+    font-weight: $base-font-weight;
+    text-transform: uppercase;
+  }
+}
+
+// Home - term of the day
+.home-totd{
+  
+  h2{
+    @include adjust-font-size-to(24px);
+    background: $brand-color-orange;
+    color: $white;
+    line-height: 2;
+    height: 2em;
+    font-weight: $mid-light-font-weight;
+    text-transform: none;
+    position: absolute;
+    left:50%;
+    letter-spacing: 0;
+    margin-left: -7em;
+    top: -1em;
+    width: 14em;
+   
+    &:before,
+    &:after{
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      position: absolute;
+    }
+    &:after{
+      border-width: 1em 0 1em 1em;
+      border-color: transparent transparent transparent $brand-color-orange;
+      left: 50%;
+      margin-left: 7em;
+    }
+    &:before{
+      border-width: 1em 1em 1em 0;
+      border-color: transparent $brand-color-orange transparent transparent;
+      right: 50%;
+      margin-right: 7em;
+    }
+  }
+
+  p{
+    @extend %t-medium;
+    font-weight: $light-font-weight;
+  }
+}
+
+//Term footer
+
+.term-footer{
+  h1{
+    @extend %t-medium;
+  }
+  h2{
+    @include rhythm(0, 0.25,1, 1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid $brand-color-navy;
+  }
+  ul{
+    @include styled-list;
+  }
+
+  a{
+    color: $brand-color-blue;
+    font-weight: $mid-light-font-weight;
+  }
+}

@@ -1,0 +1,127 @@
+<% content_for :javascripts, javascript_include_tag('jquery.tokeninput.min') %>
+<% content_for :javascripts, javascript_include_tag('refinery/open_close_sections') %>
+<% content_for :javascripts, javascript_include_tag('refinery/term_validation') %>
+<% content_for :javascripts, javascript_include_tag('refinery/add_wymeditor') %>
+<% content_for :javascripts, javascript_include_tag('refinery/alert_unsaved_changes') %>
+<% content_for :javascripts, javascript_include_tag('refinery/related_terms') %>
+<% content_for :javascripts, javascript_include_tag('refinery/theme_picker') %>
+<% content_for :javascripts, javascript_include_tag('refinery/nested_models') %>
+
+<% content_for :stylesheets, stylesheet_link_tag('admin') %>
+<% content_for :stylesheets, stylesheet_link_tag('refinery/nested_models') %>
+<% content_for :stylesheets, stylesheet_link_tag('token-input-facebook') %>
+
+<%= form_for [refinery, :terms_admin, @term], :html => { :class => "term-form"} do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @term,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :acronym -%>
+    <%= f.text_field :acronym -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :definition_title -%>
+    <%= f.text_field :definition_title, value: (@term.definition_title.present?? @term.definition_title : 'Definition') -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:definition, :description],
+                :object => "terms/term" -%>
+  </div>
+
+  <br><br>
+
+  <div class="field">
+    <%= f.label :banner, "Featured image" %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+            :f => f,
+            :field => :featured_image_id,
+            :image => f.object.featured_image,
+            :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :caption -%>
+    <%= f.text_field :caption, :class => 'larger widest' -%>
+  </div>
+
+  <br><br>
+
+  <div class='field sections' data-sortable='true'>
+    <%= f.label :sections, :class => "section-title" %>
+    <%= f.fields_for :sections do |j| %>
+      <%= render 'section_fields', :f => j %>
+    <% end %>
+    <%= link_to_add_fields 'Add section', f, :sections %>
+  </div>
+
+  <br><br>
+
+  <div class='field' data-sortable='true' id="references">
+    <%= f.label :references, :class => "section-title" %>
+    <%= f.fields_for :references do |j| %>
+      <%= render 'reference_fields', :f => j %>
+    <% end %>
+    <%= link_to_add_fields 'Add reference', f, :references %>
+  </div>
+
+  <br><br>
+
+  <div class='field' data-sortable='true'>
+    <%= f.label :tools, :class => "section-title" %>
+    <%= f.fields_for :tools do |j| %>
+      <%= render 'tool_fields', :f => j %>
+    <% end %>
+    <%= link_to_add_fields 'Add tool', f, :tools %>
+  </div>
+
+  <br><br>
+
+  <div class='field' data-sortable='true'>
+    <%= f.label :links, :class => "section-title" %>
+    <%= f.fields_for :links do |j| %>
+      <%= render 'link_fields', :f => j %>
+    <% end %>
+    <%= link_to_add_fields 'Add link', f, :links %>
+  </div>
+
+  <br><br>
+
+  <div class='field'>
+    <%= f.label :related_term_tokens, "Related terms", :class => "section-title" %>
+    <%= f.text_field :related_term_tokens, data: {load: @term.related_terms} %>
+  </div>
+
+  <br><br>
+
+  <div class='field'>
+    <%= f.label :master_theme, "Select Master theme", :class => "section-title" %>
+    <%= render 'theme_picker', f: f %>
+  </div>
+
+  <br><br>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.terms.admin.terms.term'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @term.title) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

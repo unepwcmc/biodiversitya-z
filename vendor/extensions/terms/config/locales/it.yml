@@ -1,0 +1,51 @@
+it:
+  refinery:
+    plugins:
+      themes:
+        title: Themes
+      terms:
+        title: Terms
+    terms:
+      admin:
+        themes:
+          actions:
+            create_new: Aggiungi Nuovo Theme
+            reorder: Riordina Themes
+            reorder_done: Termina il Riordino di Themes
+          records:
+            title: Themes
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Themes. Clicca "Aggiungi Nuovo Theme"
+              per aggiungere il tuo primo theme.
+          theme:
+            view_live_html: Guarda live questo theme <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo theme
+            delete: Rimuovi per sempre questo theme
+        terms:
+          actions:
+            create_new: Aggiungi Nuovo Term
+            reorder: Riordina Terms
+            reorder_done: Termina il Riordino di Terms
+          records:
+            title: Terms
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Terms. Clicca "Aggiungi Nuovo Term" per
+              aggiungere il tuo primo term.
+          term:
+            view_live_html: Guarda live questo term <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo term
+            delete: Rimuovi per sempre questo term
+      themes:
+        show:
+          other: Altri Themes
+      terms:
+        show:
+          other: Altri Terms
+  activerecord:
+    attributes:
+      refinery/terms/theme:
+        title: Title
+      refinery/terms/term:
+        title: Title
+        definition: Definition
+        description: Description

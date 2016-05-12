@@ -1,0 +1,176 @@
+<script>riveted.init();</script>
+
+<script>
+  pageType = "Term";
+</script>
+
+<% content_for :title, "#{@term.title} definition".html_safe %>
+
+<% content_for :meta_description do %><%= raw truncate( sanitize(@term.description.to_s, :tags=>[]), :length => 155) %><% end %>
+
+<% content_for :custom_body_class, "term" %>
+
+<% content_for :body_class, @term.master_theme_title.to_s.parameterize %>
+
+<% content_for :article_header do %>
+
+  <%= raw no_master_theme_warning unless @term.master_theme %>
+
+  <header class="term-header">
+
+    <div class="term-header-left">
+      <h1><%=raw @term.title %></h1>
+
+      <% if @term.definition.present? %>
+        <section class="highlight-box">
+          <h2><%= @term.definition_title %></h2>
+          <p><%= raw parse_for_citations(@term.definition) %></p>
+        </section>
+      <% end %>
+    </div>
+
+    <div class="term-header-right">
+      <section class="circle-buttons">
+        <%= output_themes_for_term(@themes, @term) %>
+      </section>
+    </div>
+
+  </header>
+
+<% end %>
+
+<% content_for :article_body do %>
+
+  <div class="term-main">
+    <section class="description">
+      <p><%= raw parse_for_citations(@term.description) %></p>
+    </section>
+
+    <%= render 'contents' if @term.sections.size > 2 %>
+
+    <%= render partial: 'section', collection: @term.sections %>
+
+    <%= render 'references' if @term.references.any? %>
+
+    <% if @term.sections.size > 2 %>
+
+      <section id="download" class="download-large">
+        <%= link_to refinery.terms_term_path(@term, format:'pdf'), class:'js-toggle-content', target: :blank, :onclick => "
+  dataLayer.push({
+      'event': gtm.click,
+      'eventCategory': 'Download',
+      'eventAction': 'PDF',
+      'eventLabel': 'PDF Download',
+      'eventValue': '#{@term.title}'
+  });" do %>
+          <h2><%= copywriting('Download title', { scope: 'Term', default: 'Download' }) %></h2>
+          <p><%= copywriting('Download description', { scope: 'Term', default: 'Download this factsheet as a PDF' }) %></p>
+        <% end %>
+      </section>
+    <% end %>
+
+    <aside class="back-to-top">
+      <a href=".page-wrap.with-gradient" class="js-smooth-scroll" data-offset="20">Back to top</a>
+    </aside>
+
+  </div>
+<% end %>
+
+<% content_for :article_sidebar do %>
+
+  <aside class="term-sidebar">
+
+    <div>
+      <%= render 'featured_image' unless @term.featured_image.nil? %>
+      <%= render 'categories', categories: @term.categories if @term.categories.any? %>
+      <%= render 'terms', terms: @term.related_terms if @term.related_terms.any? %>
+      <%= render 'tools', tools: @term.tools if @term.tools.any? %>
+      <%= render 'links', links: @term.links if @term.links.any? %>
+      <p class="article-meta">Page last updated <%= @term.updated_at.to_s(:updated_at) %></p>
+    </div>
+
+    <%= link_to 'Download the factsheet as a PDF file', refinery.terms_term_path(@term, format:'pdf'), target: :blank, class:'download-small', onclick: "
+dataLayer.push({
+    'event': gtm.click,
+    'eventCategory': 'Download',
+    'eventAction': 'PDF',
+    'eventLabel': 'PDF Download',
+    'eventValue': '#{@term.title}'
+});" if @term.sections.size > 2 %>
+
+  </aside>
+
+<% end %>
+
+<% content_for :article_footer do %>
+
+  <footer class="term-footer">
+
+    <h1><%=raw @term.title %></h1>
+
+    <aside class="circle-buttons">
+      <%= output_themes_for_term(@themes, @term) %>
+    </aside>
+
+    <%= content_tag :section do %>
+      <% render 'categories', categories: @term.categories %>
+    <% end %>
+
+    <%= content_tag :section do %>
+      <% render 'terms', terms: @term.related_terms %>
+    <% end %>
+
+    <%= content_tag :section do %>
+      <%= render 'tools', tools: @term.tools %>
+    <% end %>
+
+    <%= content_tag :section do %>
+      <%= render 'links', links: @term.links %>
+    <% end %>
+
+    <p class="article-meta">Page last updated <%= @term.updated_at.to_s(:updated_at) %></p>
+
+  </footer>
+
+<% end %>
+
+
+
+<section class="page-banner theme-banner" role="banner" style='background-image: url(<%= background_image(@term.master_theme_banner, '2400x200#') %>)'>
+
+  <aside><%= raw @term.master_theme_image_citation %></aside>
+
+  <div class="container image">
+
+    <h1 class="h3"><%= @term.master_theme_tagline %></h1>
+
+  </div>
+
+  <section class="theme-banner-explanation">
+
+    <div class="container banner-explanation">
+
+      <p><%= raw @term.master_theme_synopsis %></p>
+
+      <span class="hidden banner-explanation-expanded"><%= raw @term.master_theme_description %></span>
+
+      <a href=".banner-explanation-expanded" class="js-smooth-expand" data-alternativetext="Read less" data-normaltext="Read more">Read more</a>
+
+    </div>
+
+  </section>
+
+</section>
+
+<article class="page-wrap with-gradient">
+
+  <div class="container">
+
+    <%= yield :article_header %>
+    <%= yield :article_sidebar %>
+    <%= yield :article_body %>
+    <%= yield :article_footer %>
+
+  </div>
+
+</article>

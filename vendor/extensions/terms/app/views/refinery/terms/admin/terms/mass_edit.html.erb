@@ -1,0 +1,9 @@
+<%= form_tag refinery.mass_save_terms_admin_terms_path do |f| %>
+
+  <table>
+    <%= render partial: 'mass_edit', collection: @terms, as: :term %>
+  </table>
+
+  <%= submit_tag %>
+
+<% end %>

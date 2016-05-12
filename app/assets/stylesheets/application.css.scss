@@ -1,0 +1,48 @@
+/* MAIN STYLESHEET - ONLY IMPORT PARTIALS INTO THIS FILE */
+
+/*
+
+During development you may wish to use sprockets in order to keep livereloads nice and snappy.
+
+As files served via sprockets do not 'talk' to one another you cannot use global elements
+such as variables and mixins.  To get around this, create a file called _all-globals.scss
+in stylesheets and @import the base sheets you will need to use in other stylesheets.
+Then @import this all-globals sheet at the top of each of the other stylesheets that
+might need those values/mixins.
+
+IMPORTANT - to avoid unneccessary repeats of styles in each stylesheet that calls _all-globals,
+you should not import into _all-globals any stylesheets that contain styles that would be
+printed to the compiled stylesheet.  Therefore only variables, mixins, functions and placeholder
+styles (that would be extended) should be included.
+
+*/
+
+
+//= require ./base/_reset
+//= require ./base/_fonts
+//= require ./base/_vars
+
+//= require ./elements/_global-elements
+//= require ./elements/_typography
+//= require ./elements/_header
+//= require ./elements/_footer
+//= require ./elements/_buttons
+//= require ./elements/_forms
+//= require ./elements/_color-variations
+//= require ./elements/_autocomplete
+
+//= require ./page-specific/_home
+//= require ./page-specific/_term-view
+//= require ./page-specific/_theme-view
+//= require ./page-specific/_search-view
+//= require ./page-specific/_article-view
+
+.text-align-left{text-align:left !important}
+.text-align-center{text-align:center !important}
+.text-align-right{text-align:right !important}
+.text-align-justify{text-align:justify !important}
+.image-align-left{float:left;margin-right:6px;margin-bottom:6px !important}
+.image-align-right{float:right;margin-left:6px;margin-bottom:6px !important}
+.font-size-small{font-size: 0.75em !important}
+.font-size-normal{font-size: 1em !important}
+.font-size-large {font-size: 1.25em !important}
