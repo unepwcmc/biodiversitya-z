@@ -24,17 +24,6 @@ set :ssh_options, {
 }
 
 
-namespace :deploy do
-
-  desc 'Restart application'
-  task :start do ; end
-  task :stop do ; end
-  task :restart do
-    on roles(:app), in: :sequence do
-      execute "touch #{File.join(current_path,'tmp','restart.txt')}"
-    end
-  end
-  after :publishing, :restart
 
   desc 'Rebuild the sphinx config'
   task :configure_sphinx do
@@ -46,8 +35,9 @@ namespace :deploy do
       end
     end
   end
-  before :restart, :configure_sphinx
-end
+after "deploy", :configure_sphinx
+
+
 
 
 
@@ -57,3 +47,6 @@ set :linked_files, %w{config/database.yml config/initializers/refinery/core.rb c
 set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle')
 
 set :keep_releases, 5
+
+set :passenger_restart_with_touch, false
+

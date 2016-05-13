@@ -9,18 +9,19 @@ staging:
   min_prefix_len: 2
   version: '2.1.9'
   bin_path: '/usr/bin'
-  configuration_file: /home/wcmc/shared/config/staging.sphinx.conf
-  pid_file: /home/wcmc/shared/pids/searchd.pid
-  indices_location: /home/wcmc/shared/db/sphinx
-  binlog_path: /home/wcmc/shared/log/binlog
+  configuration_file: /home/wcmc/biodiversitya-z/shared/config/staging.sphinx.conf
+  pid_file: /home/wcmc/biodiversitya-z/shared/tmp/pids/searchd.pid
+  indices_location: /home/wcmc/biodiversitya-z/shared/db/spinx
+  binlog_path: /home/wcmc/biodiversitya-z/shared/log/binlog
   enable_star: true
 
 production:
-  min_prefix_len: 2  
+  min_prefix_len: 2
   version: '2.1.8'
   bin_path: '/usr/bin'
-  configuration_file: /home/wcmc/shared/config/production.sphinx.conf
-  pid_file: /home/wcmc/shared/pids/searchd.pid
-  indices_location: /home/wcmc/shared/db/sphinx
-  binlog_path: /home/wcmc/shared/log/binlog
+  configuration_file: /home/wcmc/biodiversitya-z/shared/config/production.sphinx.conf
+  pid_file: /home/wcmc/biodiversitya-z/shared/tmp/pids/searchd.pid
+  indices_location: /home/wcmc/biodiversitya-z/shared/db/spinx
+  binlog_path: /home/wcmc/biodiversitya-z/shared/log/binlog
   enable_star: true
+
