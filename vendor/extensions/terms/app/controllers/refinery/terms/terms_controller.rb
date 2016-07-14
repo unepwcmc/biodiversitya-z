@@ -45,7 +45,20 @@ module Refinery
 
       def show
         @themes = Theme.themes.order(:title)
-        add_breadcrumb session[:breadcrumb_theme_title], "/themes/#{session[:breadcrumb_theme_slug]}" if session[:breadcrumb_theme_title]
+        
+        @theme_title = @term.master_theme.title
+        @theme_slug = "/themes/#{@term.master_theme.slug}"
+        
+        #We need to make sure the theme that's in the session is actually attached to the term
+        @term.themes.each do |theme|
+          if session[:breadcrumb_theme_title] && session[:breadcrumb_theme_title] == theme.title
+            @theme_title = session[:breadcrumb_theme_title]
+            @theme_slug = "/themes/#{session[:breadcrumb_theme_slug]}"
+          end
+        end
+
+        add_breadcrumb @theme_title, @theme_slug
+
         add_breadcrumb @term.title, ""
         respond_to do |format|
           format.html
