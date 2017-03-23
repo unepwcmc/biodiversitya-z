@@ -19,18 +19,18 @@
 
   .unep-wcmc {
     @include transition(all 0.2s ease-in-out);
-    background-image: image-url('logo-wcmc-white.png');
+    background-image: image-url('https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg');
     background-position: center left;
     background-repeat: no-repeat;
-    background-size: 130px 70px;
+    background-size: 100%;
     bottom: -160px;
     height: 70px;
     left: 50%;
-    margin-left: -65px;
+    margin-left: -100px;
     margin-top: -35px;
-    opacity: 0.8;
+    opacity: 0.6;
     position: absolute;
-    width: 130px;
+    width: 200px;
 
     @include breakpoint($large_mobile) {
       bottom: -120px;
@@ -42,7 +42,7 @@
     }
 
     &:hover {
-      opacity: 1;
+      opacity: 0.8;
     }
   }
 

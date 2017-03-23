@@ -129,18 +129,18 @@
     }
 
     &.wcmc-logo{
-      background-image: image-url('logo-wcmc.jpg');
+      background-image: url(https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017.svg);
       background-repeat: no-repeat;
       background-position: top center;
       background-size: 99%;
       float: left;
       height: 40px;
-      margin-top: 2px;
-      width: 75px;
+      margin-top: 5px;
+      width: 100px;
 
       @include breakpoint($large_mobile) {
         height: 54px;
-        width: 95px;
+        width: 142px;
       }
     }
   }
@@ -335,7 +335,7 @@
         &.wcmc-logo{
           height: 50px;
           margin-top: 10px;
-          width: 95px;
+          width: 155px;
         }
       }
     }
