@@ -18,8 +18,6 @@ module Biodiversity
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
-
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -74,6 +72,5 @@ module Biodiversity
     # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
     #config.assets.precompile += ['refinery/*', 'pdf.css', 'nested_models.css', 'admin.css', 'token-input-facebook.css', 'jquery.tokeninput.min.js', 'refinery/nested_models.js', 'refinery/nested_models.css']
     config.assets.precompile += ['refinery/*', 'pdf.css', 'admin.css', 'token-input-facebook.css', 'jquery.tokeninput.min.js']
-
   end
 end

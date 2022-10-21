@@ -9,8 +9,8 @@ Biodiversity::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
-  # Automatically inject JavaScript needed for LiveReload
-  # config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
+
+
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -44,5 +44,4 @@ Biodiversity::Application.configure do
   config.action_controller.asset_host = 'localhost:3000'
   config.action_mailer.asset_host = 'localhost:3000'
   config.action_mailer.default_url_options = { :host => 'localhost:3000', :protocol => 'http' }
-
 end
