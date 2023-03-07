@@ -2,7 +2,7 @@ module Refinery
   module Terms
     class Theme < Refinery::Core::BaseModel
 
-      attr_accessible :title, :position, :parent_id, :logo_id, :banner_id, :tagline, :description, :synopsis, :icon_id, :image_citation
+      # attr_accessible :title, :position, :parent_id, :logo_id, :banner_id, :tagline, :description, :synopsis, :icon_id, :image_citation
 
       validates :description, presence: true
       validates :tagline, presence: true, if: :is_theme?

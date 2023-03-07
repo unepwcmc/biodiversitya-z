@@ -4,7 +4,7 @@ module Refinery
 
       self.table_name = 'refinery_term_theme_associations'
 
-      attr_accessible :theme_id, :term_id, :is_master
+      # attr_accessible :theme_id, :term_id, :is_master
 
       belongs_to :term, touch: true
       belongs_to :theme, counter_cache: "terms_count"

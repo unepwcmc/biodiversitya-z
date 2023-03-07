@@ -4,8 +4,8 @@ module Refinery
 
       self.table_name = 'refinery_terms'
 
-      attr_accessible :title, :definition, :description, :acronym, :related_term_tokens, :position, :definition_title, :association_ids, :featured_image_id, :master_id, :caption
-      attr_accessible :legacy_type, :legacy_id
+      # # attr_accessible :title, :definition, :description, :acronym, :related_term_tokens, :position, :definition_title, :association_ids, :featured_image_id, :master_id, :caption
+      # # attr_accessible :legacy_type, :legacy_id
       attr_reader :related_term_tokens
 
       # Used to allow access of param in model
@@ -30,22 +30,22 @@ module Refinery
       # Sections association
       has_many :sections, :order => 'position ASC'
       accepts_nested_attributes_for :sections, allow_destroy: true
-      attr_accessible :sections_attributes
+      # attr_accessible :sections_attributes
 
       # References association
       has_many :references, :order => 'position ASC'
       accepts_nested_attributes_for :references, allow_destroy: true
-      attr_accessible :references_attributes
+      # attr_accessible :references_attributes
 
       # Links association
       has_many :links, :order => 'position ASC'
       accepts_nested_attributes_for :links, allow_destroy: true
-      attr_accessible :links_attributes
+      # attr_accessible :links_attributes
 
       # Tools association
       has_many :tools, :order => 'position ASC'
       accepts_nested_attributes_for :tools, allow_destroy: true
-      attr_accessible :tools_attributes
+      # attr_accessible :tools_attributes
 
       # Related terms
       has_many :related_term_associations
@@ -62,7 +62,7 @@ module Refinery
 
       # Theme associations
       accepts_nested_attributes_for :associations, allow_destroy: true
-      attr_accessible :associations_attributes
+      # attr_accessible :associations_attributes
 
       # Master theme
       has_one :term_theme, class_name: 'Refinery::Terms::TermTheme', conditions: { is_master: true }
